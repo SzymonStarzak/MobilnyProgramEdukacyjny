@@ -2,12 +2,14 @@ package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.orm.query.Condition;
 import com.orm.query.Select;
 
 import java.util.ArrayList;
@@ -15,21 +17,29 @@ import java.util.List;
 import java.util.Random;
 
 
-public class MyActivity extends Activity {
+public class MenuActivity extends Activity {
 
     private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
         seedDataIntoDataBase();
 
-        TextView tw = (TextView) findViewById(R.id.textView);
+        Button language = (Button) findViewById(R.id.language_button);
+        language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,LanguageActivity.class);
+                startActivity(intent);
+            }
+        });
 
+     //   TextView tw = (TextView) findViewById(R.id.textView);
 
-        long alphabetcount = Alphabet.count(Alphabet.class,null,null);
+      /*  long alphabetcount = Alphabet.count(Alphabet.class,null,null);
         long randomvalue;
 
         do {
@@ -48,8 +58,8 @@ public class MyActivity extends Activity {
                 wordss.add(w);
         }
         for( Word w: wordss) {
-            tw.append(letter.pl_str + " " +w.full_word);
-        }
+     //       tw.append(letter.pl_str + " " + w.full_word);
+        }*/
 
     }
 

@@ -7,7 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.orm.query.Condition;
+import com.orm.query.Select;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class MyActivity extends Activity {
@@ -19,37 +24,32 @@ public class MyActivity extends Activity {
         setContentView(R.layout.activity_my);
         context = getApplicationContext();
 
-
         seedDataIntoDataBase();
 
         TextView tw = (TextView) findViewById(R.id.textView);
 
-        //Alphabet a = new Alphabet("u");
-        List<Rule> list = Rule.listAll(Rule.class);//, "alphabet = ?", new String[]{String.valueOf(a)});
+
+        long alphabetcount = Alphabet.count(Alphabet.class,null,null);
+        long randomvalue;
+
+        do {
+            randomvalue = (new Random()).nextInt((int) (alphabetcount));
+        }while(randomvalue %2 == 1);
+
+        Select select = Select.from(Alphabet.class);
+        Alphabet alph = (Alphabet) select.first();
+        Alphabet letter = Alphabet.findById(Alphabet.class,alph.getId() + randomvalue);
+
         List<Word> words = Word.listAll(Word.class);
-        //List<Rule> list = sel.list();
+        List<Word> wordss = new ArrayList<Word>();
 
-        for( Rule b:list) for(Word w:words) {
-            if(b.alphabet.pl_str.equals("u") && w.alphabet.pl_str.equals("u"))
-                tw.append("\n" + b.principle + " <> " + w.full_word);
+        for(Word w: words) {
+            if (w.alphabet.pl_str.equals(letter.pl_str))
+                wordss.add(w);
         }
-     /*   tw.setText("");
-        for(Word w:words) {
-            if(w.alphabet.pl_str.equals("rz")){
-                tw.append(" " + w.alphabet );
-            }
-        }*/
-
-       // Alphabet a2 = Alphabet.findById(Alphabet.class,3l);
-       // long a2 = Alphabet.count(Alphabet.class,null,null);
-
-        //tw.setText(String.valueOf(a2));
-
-
-//        while (a.hasNext()) {
-//            Alphabet a2 = a.next();
-//       p     tw.append(a2.pl_str + ", ");
-//        }
+        for( Word w: wordss) {
+            tw.append(letter.pl_str + " " +w.full_word);
+        }
 
     }
 
@@ -60,7 +60,13 @@ public class MyActivity extends Activity {
         return true;
     }
     public void seedDataIntoDataBase() {
-        this.deleteDatabase("zasady.db");
+    //    this.deleteDatabase("zasady.db");
+        Alphabet.deleteAll(Alphabet.class);
+        Rule.deleteAll(Rule.class);
+        RuleException.deleteAll(Rule.class);
+        Word.deleteAll(Word.class);
+
+
         Alphabet a1 = new Alphabet("rz"); a1.save();
         Alphabet a2 = new Alphabet("ż");  a2.save(); //a.setId(2l);
         Alphabet a3 = new Alphabet("u");  a3.save(); //a.setId(3l);
@@ -98,9 +104,12 @@ public class MyActivity extends Activity {
        Rule r16 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, ż, z, dz",a6); r16.save();
 
 
-       Word w1 = new Word("Tokarz", "Toka",a1); w1.save();
-            w1 = new Word("Ucho", "cho",a3); w1.save();
-         //   w1 = new Word("")
+       Word w1 = new Word("tokarz", "Toka",a1); w1.save();
+       Word w2 = new Word("ucho", "cho",a3); w2.save();
+       Word w3 = new Word("herb","erg",a6); w3.save();
+       Word w4 = new Word("chryzantemy","ryzantemy",a5); w4.save();
+       Word w5 = new Word("potężny","potęny",a2); w5.save();
+       Word w6 = new Word("łódka","łdka",a4 ); w6.save();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

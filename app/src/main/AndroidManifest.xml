@@ -26,14 +26,17 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LanguageActivity"
             android:label="@string/title_activity_language" >
-
+        </activity>
+        <activity
+            android:name=".OrthographyActivity"
+            android:label="@string/title_activity_orthography" >
         </activity>
     </application>
 

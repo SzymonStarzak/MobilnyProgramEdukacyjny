@@ -37,29 +37,7 @@ public class MenuActivity extends Activity {
             }
         });
 
-     //   TextView tw = (TextView) findViewById(R.id.textView);
 
-      /*  long alphabetcount = Alphabet.count(Alphabet.class,null,null);
-        long randomvalue;
-
-        do {
-            randomvalue = (new Random()).nextInt((int) (alphabetcount));
-        }while(randomvalue %2 == 1);
-
-        Select select = Select.from(Alphabet.class);
-        Alphabet alph = (Alphabet) select.first();
-        Alphabet letter = Alphabet.findById(Alphabet.class,alph.getId() + randomvalue);
-
-        List<Word> words = Word.listAll(Word.class);
-        List<Word> wordss = new ArrayList<Word>();
-
-        for(Word w: words) {
-            if (w.alphabet.pl_str.equals(letter.pl_str))
-                wordss.add(w);
-        }
-        for( Word w: wordss) {
-     //       tw.append(letter.pl_str + " " + w.full_word);
-        }*/
 
     }
 

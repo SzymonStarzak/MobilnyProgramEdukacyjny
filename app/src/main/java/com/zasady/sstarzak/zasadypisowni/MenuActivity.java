@@ -36,9 +36,6 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override
@@ -48,7 +45,7 @@ public class MenuActivity extends Activity {
         return true;
     }
     public void seedDataIntoDataBase() {
-        this.deleteDatabase("zasady.db");
+    //    this.deleteDatabase("zasady.db");
         Alphabet.deleteAll(Alphabet.class);
         Rule.deleteAll(Rule.class);
         RuleException.deleteAll(Rule.class);
@@ -93,11 +90,26 @@ public class MenuActivity extends Activity {
 
 
        Word w1 = new Word("tokarz", "toka",a1); w1.save();
-       Word w2 = new Word("ucho", "cho",a3); w2.save();
-       Word w3 = new Word("herb","erb",a6); w3.save();
-       Word w4 = new Word("chryzantemy","ryzantemy",a5); w4.save();
-       Word w5 = new Word("potężny","potęny",a2); w5.save();
-       Word w6 = new Word("łódka","łdka",a4 ); w6.save();
+       w1 = new Word("ucho", "cho",a3); w1.save();
+       w1 = new Word("herb","erb",a6); w1.save();
+       w1 = new Word("chryzantemy","ryzantemy",a5); w1.save();
+       w1 = new Word("potężny","potęny",a2); w1.save();
+       w1 = new Word("łódka","łdka",a4 ); w1.save();
+        w1 = new Word("abdukcja","abdkcja",a3); w1.save();
+        w1 = new Word("abordaże","abordae",a2); w1.save();
+        w1 = new Word("przeprzężcie","peprzężcie",a1); w1.save();
+        w1 = new Word("przylepiec","pylepiec",a1); w1.save();
+        w1 = new Word("rozrzewniane","rozewniane",a1); w1.save();
+        w1 = new Word("hominida","ominida",a6); w1.save();
+        w1 = new Word("homofon","omofon",a6); w1.save();
+        w1 = new Word("hurtowna","urtowna",a6); w1.save();
+        w1 = new Word("pohamowała","poamowała",a6); w1.save();
+        w1 = new Word("szahady","szaady",a6); w1.save();
+        w1 = new Word("telehity","teleity",a6); w1.save();
+        w1 = new Word("rozniósł","roznisł",a4); w1.save();
+        w1 = new Word("wróbla","wrbla",a4); w1.save();
+        w1 = new Word("żydówka","żydwka",a4); w1.save();
+        w1 = new Word("żużlówce","żużlwce",a4); w1.save();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

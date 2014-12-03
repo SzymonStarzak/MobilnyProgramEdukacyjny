@@ -1,11 +1,15 @@
 package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orm.query.Select;
 
@@ -38,6 +42,8 @@ public class OrthographyActivity extends Activity {
 
     private long randomvalueforid;
 
+    Context context;
+
    // private long random
 
     @Override
@@ -53,6 +59,8 @@ public class OrthographyActivity extends Activity {
         wordscount = Word.count(Word.class, null, null);
         filteredwords = new ArrayList<Word>();
 
+        context = getApplicationContext();
+
         orthographyTest();
     }
 
@@ -66,30 +74,70 @@ public class OrthographyActivity extends Activity {
         letter = Alphabet.findById(Alphabet.class,firstletter.getId() + randomvalueforid);
         letterpair = Alphabet.findById(Alphabet.class,firstletter.getId() + randomvalueforid + 1);
 
+        filteredwords.clear();
+
           for(Word w: words) {
-            if (w.alphabet.pl_str.equals(letter.pl_str))
+            if (w.alphabet.pl_str.equals(letter.pl_str) || w.alphabet.pl_str.equals(letterpair.pl_str))
                 filteredwords.add(w);
         }
         filteredwordscount = (long) filteredwords.size();
         word = filteredwords.get((new Random()).nextInt((int) filteredwordscount));
-        /*
-        for( Word w: filteredwords) {
-        //    tw.append(letter.pl_str + " " + w.full_word);
-        }*/
 
         Button button1 = (Button) findViewById(R.id.orthography_answer1_button);
         Button button2 = (Button) findViewById(R.id.orthography_answer2_button);
         TextView tw1 = (TextView) findViewById(R.id.partofword);
 
+
+        final int diff = indexOfWordsDifference(word.full_word,word.part_word);
+
+        String puzzle_word = word.part_word.substring(0,diff) + "..." + word.part_word.substring(diff);
+
         button1.setText(letter.pl_str);
         button2.setText(letterpair.pl_str);
-        tw1.setText(word.part_word);
+        tw1.setText(puzzle_word);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String answer = word.part_word.substring(0,diff) + letter.pl_str + word.part_word.substring(diff);
 
-        orthographyTest();
+                if(answer.equals(word.full_word)) {
+                    Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
 
+                } else {
+                    Toast.makeText(context,"Źle",Toast.LENGTH_SHORT).show();
+                }
+                orthographyTest();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String answer = word.part_word.substring(0,diff) + letterpair.pl_str + word.part_word.substring(diff);
 
+                if(answer.equals(word.full_word)) {
+                    Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(context,"Źle",Toast.LENGTH_SHORT).show();
+                }
+                orthographyTest();
+            }
+        });
     }
-
+    //nie znalazłem żadnej metody string która by zwracała index różnych znaków
+    int indexOfWordsDifference(String full_word, String part_word) {
+        int diff = -1;
+        for(int a = 0; a < part_word.length(); a++) {
+            if(full_word.charAt(a) != part_word.charAt(a)) {
+                diff = a;
+                break;
+            }
+        }
+        if(diff == -1) {
+            diff = part_word.length();
+        }
+        return diff;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

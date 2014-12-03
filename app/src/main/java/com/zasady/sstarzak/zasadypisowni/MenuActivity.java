@@ -48,7 +48,7 @@ public class MenuActivity extends Activity {
         return true;
     }
     public void seedDataIntoDataBase() {
-    //    this.deleteDatabase("zasady.db");
+        this.deleteDatabase("zasady.db");
         Alphabet.deleteAll(Alphabet.class);
         Rule.deleteAll(Rule.class);
         RuleException.deleteAll(Rule.class);
@@ -92,9 +92,9 @@ public class MenuActivity extends Activity {
        Rule r16 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, ż, z, dz",a6); r16.save();
 
 
-       Word w1 = new Word("tokarz", "Toka",a1); w1.save();
+       Word w1 = new Word("tokarz", "toka",a1); w1.save();
        Word w2 = new Word("ucho", "cho",a3); w2.save();
-       Word w3 = new Word("herb","erg",a6); w3.save();
+       Word w3 = new Word("herb","erb",a6); w3.save();
        Word w4 = new Word("chryzantemy","ryzantemy",a5); w4.save();
        Word w5 = new Word("potężny","potęny",a2); w5.save();
        Word w6 = new Word("łódka","łdka",a4 ); w6.save();

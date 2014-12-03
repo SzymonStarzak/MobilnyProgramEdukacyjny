@@ -38,6 +38,10 @@
             android:name=".OrthographyActivity"
             android:label="@string/title_activity_orthography" >
         </activity>
+        <activity
+            android:name=".HangmanActivity"
+            android:label="@string/title_activity_hangman" >
+        </activity>
     </application>
 
 </manifest>

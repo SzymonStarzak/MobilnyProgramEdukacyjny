@@ -24,6 +24,15 @@ public class LanguageActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button button2 = (Button) findViewById(R.id.hangman_button);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HangmanActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -8,13 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.orm.query.Select;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 
 public class MenuActivity extends Activity {
@@ -26,7 +19,11 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-        seedDataIntoDataBase();
+        //context.deleteDatabase("zasady.db");
+
+        //initOrthographyDb();
+        //initHangmanDb();
+        //initPolishLettersDb();
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +41,8 @@ public class MenuActivity extends Activity {
         getMenuInflater().inflate(R.menu.my, menu);
         return true;
     }
-    public void seedDataIntoDataBase() {
+
+    public void initOrthographyDb() {
     //    this.deleteDatabase("zasady.db");
         Alphabet.deleteAll(Alphabet.class);
         Rule.deleteAll(Rule.class);
@@ -110,6 +108,58 @@ public class MenuActivity extends Activity {
         w1 = new Word("wróbla","wrbla",a4); w1.save();
         w1 = new Word("żydówka","żydwka",a4); w1.save();
         w1 = new Word("żużlówce","żużlwce",a4); w1.save();
+    }
+    public void initHangmanDb() {
+        Category.deleteAll(Category.class);
+        GameWords.deleteAll(GameWords.class);
+
+        Category c1 = new Category("Zwierzęta", "Animals"); c1.save();
+        Category c2 = new Category("Owoce","Fruits"); c2.save();
+
+        //Animals
+        GameWords gw1 = new GameWords("pies",c1); gw1.save();
+        gw1 = new GameWords("koń",c1); gw1.save();
+
+        //Fruits
+        gw1 = new GameWords("banan",c2); gw1.save();
+        gw1 = new GameWords("jagoda",c2); gw1.save();
+
+    }
+    public void initPolishLettersDb() {
+        PolishAlphabet.deleteAll(PolishAlphabet.class);
+        PolishAlphabet pa = new PolishAlphabet("A"); pa.save();
+        pa = new PolishAlphabet("Ą"); pa.save();
+        pa = new PolishAlphabet("B"); pa.save();
+        pa = new PolishAlphabet("C"); pa.save();
+        pa = new PolishAlphabet("Ć"); pa.save();
+        pa = new PolishAlphabet("D"); pa.save();
+        pa = new PolishAlphabet("E"); pa.save();
+        pa = new PolishAlphabet("Ę"); pa.save();
+        pa = new PolishAlphabet("F"); pa.save();
+        pa = new PolishAlphabet("G"); pa.save();
+        pa = new PolishAlphabet("H"); pa.save();
+        pa = new PolishAlphabet("I"); pa.save();
+        pa = new PolishAlphabet("J"); pa.save();
+        pa = new PolishAlphabet("K"); pa.save();
+        pa = new PolishAlphabet("L"); pa.save();
+        pa = new PolishAlphabet("Ł"); pa.save();
+        pa = new PolishAlphabet("M"); pa.save();
+        pa = new PolishAlphabet("N"); pa.save();
+        pa = new PolishAlphabet("Ń"); pa.save();
+        pa = new PolishAlphabet("O"); pa.save();
+        pa = new PolishAlphabet("Ó"); pa.save();
+        pa = new PolishAlphabet("P"); pa.save();
+        pa = new PolishAlphabet("R"); pa.save();
+        pa = new PolishAlphabet("S"); pa.save();
+        pa = new PolishAlphabet("Ś"); pa.save();
+        pa = new PolishAlphabet("T"); pa.save();
+        pa = new PolishAlphabet("U"); pa.save();
+        pa = new PolishAlphabet("W"); pa.save();
+        pa = new PolishAlphabet("Y"); pa.save();
+        pa = new PolishAlphabet("Z"); pa.save();
+        pa = new PolishAlphabet("Ź"); pa.save();
+        pa = new PolishAlphabet("Ż"); pa.save();
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

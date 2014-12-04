@@ -30,4 +30,14 @@
         android:layout_marginTop="50dp"
         android:layout_alignRight="@+id/ortography_button"
         android:layout_alignEnd="@+id/ortography_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wisielec ENG"
+        android:id="@+id/hangman_eng_button"
+        android:layout_marginTop="84dp"
+        android:layout_below="@+id/hangman_button"
+        android:layout_alignLeft="@+id/hangman_button"
+        android:layout_alignStart="@+id/hangman_button" />
 </RelativeLayout>

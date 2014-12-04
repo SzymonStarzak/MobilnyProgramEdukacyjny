@@ -5,14 +5,14 @@ import com.orm.SugarRecord;
 /**
  * Created by sstarzak on 2014-11-23.
  */
-public class Alphabet extends SugarRecord<Alphabet> {
+public class OrthographyAlphabet extends SugarRecord<OrthographyAlphabet> {
 
     String pl_str;
 
-    public Alphabet() {
+    public OrthographyAlphabet() {
     }
 
-    public Alphabet(String pl_str) {
+    public OrthographyAlphabet(String pl_str) {
         this.pl_str = pl_str;
     }
 }

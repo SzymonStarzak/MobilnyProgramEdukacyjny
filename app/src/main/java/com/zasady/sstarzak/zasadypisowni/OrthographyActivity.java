@@ -2,10 +2,7 @@ package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,17 +17,17 @@ import java.util.Random;
 
 public class OrthographyActivity extends Activity {
 
-    private List<Word> words;
+    private List<OrthographyWord> orthographyWords;
 
-    private Word word;
+    private OrthographyWord orthographyWord;
 
-    private List<Word> filteredwords;
+    private List<OrthographyWord> filteredwords;
 
-    private Alphabet firstletter;
+    private OrthographyAlphabet firstletter;
 
-    private Alphabet letter;
+    private OrthographyAlphabet letter;
 
-    private Alphabet letterpair;
+    private OrthographyAlphabet letterpair;
 
     private Select selectalphabet;
 
@@ -51,13 +48,13 @@ public class OrthographyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orthography);
 
-        alphabetcount = Alphabet.count(Alphabet.class,null,null);
-        selectalphabet = Select.from(Alphabet.class);
-        firstletter = (Alphabet) selectalphabet.first();
-        letter = Alphabet.findById(Alphabet.class,firstletter.getId() + randomvalueforid);
-        words = Word.listAll(Word.class);
-        wordscount = Word.count(Word.class, null, null);
-        filteredwords = new ArrayList<Word>();
+        alphabetcount = OrthographyAlphabet.count(OrthographyAlphabet.class, null, null);
+        selectalphabet = Select.from(OrthographyAlphabet.class);
+        firstletter = (OrthographyAlphabet) selectalphabet.first();
+        letter = OrthographyAlphabet.findById(OrthographyAlphabet.class, firstletter.getId() + randomvalueforid);
+        orthographyWords = OrthographyWord.listAll(OrthographyWord.class);
+        wordscount = OrthographyWord.count(OrthographyWord.class, null, null);
+        filteredwords = new ArrayList<OrthographyWord>();
 
         context = getApplicationContext();
 
@@ -71,25 +68,25 @@ public class OrthographyActivity extends Activity {
             randomvalueforid = (new Random()).nextInt((int) (alphabetcount));
         }while(randomvalueforid %2 == 1);
 
-        letter = Alphabet.findById(Alphabet.class,firstletter.getId() + randomvalueforid);
-        letterpair = Alphabet.findById(Alphabet.class,firstletter.getId() + randomvalueforid + 1);
+        letter = OrthographyAlphabet.findById(OrthographyAlphabet.class, firstletter.getId() + randomvalueforid);
+        letterpair = OrthographyAlphabet.findById(OrthographyAlphabet.class, firstletter.getId() + randomvalueforid + 1);
 
         filteredwords.clear();
 
-          for(Word w: words) {
-            if (w.alphabet.pl_str.equals(letter.pl_str) || w.alphabet.pl_str.equals(letterpair.pl_str))
+          for(OrthographyWord w: orthographyWords) {
+            if (w.orthographyAlphabet.pl_str.equals(letter.pl_str) || w.orthographyAlphabet.pl_str.equals(letterpair.pl_str))
                 filteredwords.add(w);
         }
         filteredwordscount = (long) filteredwords.size();
-        word = filteredwords.get((new Random()).nextInt((int) filteredwordscount));
+        orthographyWord = filteredwords.get((new Random()).nextInt((int) filteredwordscount));
 
         Button button1 = (Button) findViewById(R.id.orthography_answer1_button);
         Button button2 = (Button) findViewById(R.id.orthography_answer2_button);
         TextView tw1 = (TextView) findViewById(R.id.partofword);
 
-        final int diff = indexOfWordsDifference(word.full_word,word.part_word);
+        final int diff = indexOfWordsDifference(orthographyWord.full_word, orthographyWord.part_word);
 
-        String puzzle_word = word.part_word.substring(0,diff) + "..." + word.part_word.substring(diff);
+        String puzzle_word = orthographyWord.part_word.substring(0,diff) + "..." + orthographyWord.part_word.substring(diff);
 
         button1.setText(letter.pl_str);
         button2.setText(letterpair.pl_str);
@@ -97,9 +94,9 @@ public class OrthographyActivity extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String answer = word.part_word.substring(0,diff) + letter.pl_str + word.part_word.substring(diff);
+                String answer = orthographyWord.part_word.substring(0,diff) + letter.pl_str + orthographyWord.part_word.substring(diff);
 
-                if(answer.equals(word.full_word)) {
+                if(answer.equals(orthographyWord.full_word)) {
                     Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -111,9 +108,9 @@ public class OrthographyActivity extends Activity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String answer = word.part_word.substring(0,diff) + letterpair.pl_str + word.part_word.substring(diff);
+                String answer = orthographyWord.part_word.substring(0,diff) + letterpair.pl_str + orthographyWord.part_word.substring(diff);
 
-                if(answer.equals(word.full_word)) {
+                if(answer.equals(orthographyWord.full_word)) {
                     Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
 
                 } else {

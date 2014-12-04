@@ -30,6 +30,17 @@ public class LanguageActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HangmanActivity.class);
+                intent.putExtra("language","polish");
+                startActivity(intent);
+            }
+        });
+
+        Button button3 = (Button) findViewById(R.id.hangman_eng_button);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HangmanActivity.class);
+                intent.putExtra("language","english");
                 startActivity(intent);
             }
         });

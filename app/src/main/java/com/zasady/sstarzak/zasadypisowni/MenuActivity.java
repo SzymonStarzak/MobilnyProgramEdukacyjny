@@ -17,11 +17,12 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-        //context.deleteDatabase("zasady.db");
+        context.deleteDatabase("zasady.db");
 
         initOrthographyDb();
         initHangmanDb();
         initPolishLettersDb();
+        initEnglishLettersDb();
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {
@@ -35,85 +36,93 @@ public class MenuActivity extends Activity {
 
     public void initOrthographyDb() {
     //    this.deleteDatabase("zasady.db");
-        Alphabet.deleteAll(Alphabet.class);
-        Rule.deleteAll(Rule.class);
-        RuleException.deleteAll(Rule.class);
-        Word.deleteAll(Word.class);
+        OrthographyAlphabet.deleteAll(OrthographyAlphabet.class);
+        OrthographyRule.deleteAll(OrthographyRule.class);
+        OrthographyRuleException.deleteAll(OrthographyRule.class);
+        OrthographyWord.deleteAll(OrthographyWord.class);
 
 
-        Alphabet a1 = new Alphabet("rz"); a1.save();
-        Alphabet a2 = new Alphabet("ż");  a2.save(); //a.setId(2l);
-        Alphabet a3 = new Alphabet("u");  a3.save(); //a.setId(3l);
-        Alphabet a4 = new Alphabet("ó");  a4.save(); //a.setId(4l);
-        Alphabet a5 = new Alphabet("ch"); a5.save(); //a.setId(5l);
-        Alphabet a6 = new Alphabet("h");  a6.save(); //a.setId(6l);
+        OrthographyAlphabet a1 = new OrthographyAlphabet("rz"); a1.save();
+        OrthographyAlphabet a2 = new OrthographyAlphabet("ż");  a2.save(); //a.setId(2l);
+        OrthographyAlphabet a3 = new OrthographyAlphabet("u");  a3.save(); //a.setId(3l);
+        OrthographyAlphabet a4 = new OrthographyAlphabet("ó");  a4.save(); //a.setId(4l);
+        OrthographyAlphabet a5 = new OrthographyAlphabet("ch"); a5.save(); //a.setId(5l);
+        OrthographyAlphabet a6 = new OrthographyAlphabet("h");  a6.save(); //a.setId(6l);
 
        //rz
-       Rule r1 = new Rule("w wyrazach wymienia sie na R", a1); r1.save();
-       Rule r2 = new Rule("Rz piszemy w zakończeniach wyrazów: -arz, -erz", a1); r2.save();
-       Rule r3 = new Rule("Rz piszemy po spółgłoskach: b, p, d, t, g, k, ch, j, w", a1); r3.save();
-       RuleException re1 = new RuleException("wyrazy: bukszpan, gżegżółka, kształt, kszyk (nazwa ptaka), piegża (nazwa ptaka), pszczoła, Pszczyna, pszenica, pszenżyto",a1); re1.save();
-       RuleException re2 = new RuleException("w przymiotnikach zakończonych na: - szy, - ejszy, np.: lepszy, nowszy, najlepszy, najnowszy, ładniejszy, mocniejszy, najładniejszy, najmocniejszy",a1); re2.save();
+       OrthographyRule r1 = new OrthographyRule("w wyrazach wymienia sie na R", a1); r1.save();
+       OrthographyRule r2 = new OrthographyRule("Rz piszemy w zakończeniach wyrazów: -arz, -erz", a1); r2.save();
+       OrthographyRule r3 = new OrthographyRule("Rz piszemy po spółgłoskach: b, p, d, t, g, k, ch, j, w", a1); r3.save();
+       OrthographyRuleException re1 = new OrthographyRuleException("wyrazy: bukszpan, gżegżółka, kształt, kszyk (nazwa ptaka), piegża (nazwa ptaka), pszczoła, Pszczyna, pszenica, pszenżyto",a1); re1.save();
+       OrthographyRuleException re2 = new OrthographyRuleException("w przymiotnikach zakończonych na: - szy, - ejszy, np.: lepszy, nowszy, najlepszy, najnowszy, ładniejszy, mocniejszy, najładniejszy, najmocniejszy",a1); re2.save();
        //ż
-       Rule r4 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, dz, h, z, ź, s",a2); r4.save();
-       Rule r5 = new Rule("Ż piszemy w wyrazach zakończonych na: -aż, -eż",a2); r5.save();
-       Rule r6 = new Rule("Ż piszemy po literach: l, ł, r, n", a2); r6.save();
+       OrthographyRule r4 = new OrthographyRule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, dz, h, z, ź, s",a2); r4.save();
+       OrthographyRule r5 = new OrthographyRule("Ż piszemy w wyrazach zakończonych na: -aż, -eż",a2); r5.save();
+       OrthographyRule r6 = new OrthographyRule("Ż piszemy po literach: l, ł, r, n", a2); r6.save();
        //u
-       Rule r7 = new Rule("w zakończeniach rzeczowników: un, unek, uchna, uszka, uszek, uch, us, usia", a3); r7.save();
-       Rule r8 = new Rule("U piszemy w czasownikach zakończonych na: uj ujesz uje",a3); r8.save();
-       Rule r9 = new Rule("U piszemy w czasownikach typu: czuć, kuć, kłuć, pruć, snuć, np.: czuje, kuję, kłuję, pruję, snuję",a3); r9.save();
+       OrthographyRule r7 = new OrthographyRule("w zakończeniach rzeczowników: un, unek, uchna, uszka, uszek, uch, us, usia", a3); r7.save();
+       OrthographyRule r8 = new OrthographyRule("U piszemy w czasownikach zakończonych na: uj ujesz uje",a3); r8.save();
+       OrthographyRule r9 = new OrthographyRule("U piszemy w czasownikach typu: czuć, kuć, kłuć, pruć, snuć, np.: czuje, kuję, kłuję, pruję, snuję",a3); r9.save();
        //ó
-       Rule r10 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: o, e, a",a4); r10.save();
-       Rule r11 = new Rule("Ó piszemy w wyrazach zakończonych na: -ów",a4); r11.save();
-       Rule r12 = new Rule("Ó piszemy w wyrazach zakończonych na: -ówka",a4); r12.save();
-       RuleException re3 = new RuleException("skuwka, wsuwka, zasuwka",a4); re3.save();
-       RuleException re4 = new RuleException("Ó piszemy w wyrazach zakończonych na: -ówna",a4); re4.save();
-       RuleException re5 = new RuleException("Ó piszemy na początku wyrazów: ósemka, ósmy, ów, ówczesny, ówcześnie, ówdzie.",a4); re5.save();
+       OrthographyRule r10 = new OrthographyRule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: o, e, a",a4); r10.save();
+       OrthographyRule r11 = new OrthographyRule("Ó piszemy w wyrazach zakończonych na: -ów",a4); r11.save();
+       OrthographyRule r12 = new OrthographyRule("Ó piszemy w wyrazach zakończonych na: -ówka",a4); r12.save();
+       OrthographyRuleException re3 = new OrthographyRuleException("skuwka, wsuwka, zasuwka",a4); re3.save();
+       OrthographyRuleException re4 = new OrthographyRuleException("Ó piszemy w wyrazach zakończonych na: -ówna",a4); re4.save();
+       OrthographyRuleException re5 = new OrthographyRuleException("Ó piszemy na początku wyrazów: ósemka, ósmy, ów, ówczesny, ówcześnie, ówdzie.",a4); re5.save();
        //ch
-       Rule r13 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: sz",a5); r13.save();
-       Rule r14 = new Rule("Ch piszemy po literze s np.: schab, schody, wschód", a5); r14.save();
-       Rule r15 = new Rule("Ch piszemy na końcu wyrazów, np.: na drogach, orzech, zuch",a5); r15.save();
-       RuleException re6 = new RuleException("druh, Boh (nazwa rzeki)",a5); re6.save();
+       OrthographyRule r13 = new OrthographyRule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: sz",a5); r13.save();
+       OrthographyRule r14 = new OrthographyRule("Ch piszemy po literze s np.: schab, schody, wschód", a5); r14.save();
+       OrthographyRule r15 = new OrthographyRule("Ch piszemy na końcu wyrazów, np.: na drogach, orzech, zuch",a5); r15.save();
+       OrthographyRuleException re6 = new OrthographyRuleException("druh, Boh (nazwa rzeki)",a5); re6.save();
        //h
-       Rule r16 = new Rule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, ż, z, dz",a6); r16.save();
+       OrthographyRule r16 = new OrthographyRule("wymienia się w innych formach tego samego wyrazu lub w innych wyrazach na: g, ż, z, dz",a6); r16.save();
 
 
-       Word w1 = new Word("tokarz", "toka",a1); w1.save();
-       w1 = new Word("ucho", "cho",a3); w1.save();
-       w1 = new Word("herb","erb",a6); w1.save();
-       w1 = new Word("chryzantemy","ryzantemy",a5); w1.save();
-       w1 = new Word("potężny","potęny",a2); w1.save();
-       w1 = new Word("łódka","łdka",a4 ); w1.save();
-        w1 = new Word("abdukcja","abdkcja",a3); w1.save();
-        w1 = new Word("abordaże","abordae",a2); w1.save();
-        w1 = new Word("przeprzężcie","peprzężcie",a1); w1.save();
-        w1 = new Word("przylepiec","pylepiec",a1); w1.save();
-        w1 = new Word("rozrzewniane","rozewniane",a1); w1.save();
-        w1 = new Word("hominida","ominida",a6); w1.save();
-        w1 = new Word("homofon","omofon",a6); w1.save();
-        w1 = new Word("hurtowna","urtowna",a6); w1.save();
-        w1 = new Word("pohamowała","poamowała",a6); w1.save();
-        w1 = new Word("szahady","szaady",a6); w1.save();
-        w1 = new Word("telehity","teleity",a6); w1.save();
-        w1 = new Word("rozniósł","roznisł",a4); w1.save();
-        w1 = new Word("wróbla","wrbla",a4); w1.save();
-        w1 = new Word("żydówka","żydwka",a4); w1.save();
-        w1 = new Word("żużlówce","żużlwce",a4); w1.save();
+       OrthographyWord w1 = new OrthographyWord("tokarz", "toka",a1); w1.save();
+       w1 = new OrthographyWord("ucho", "cho",a3); w1.save();
+       w1 = new OrthographyWord("herb","erb",a6); w1.save();
+       w1 = new OrthographyWord("chryzantemy","ryzantemy",a5); w1.save();
+       w1 = new OrthographyWord("potężny","potęny",a2); w1.save();
+       w1 = new OrthographyWord("łódka","łdka",a4 ); w1.save();
+        w1 = new OrthographyWord("abdukcja","abdkcja",a3); w1.save();
+        w1 = new OrthographyWord("abordaże","abordae",a2); w1.save();
+        w1 = new OrthographyWord("przeprzężcie","peprzężcie",a1); w1.save();
+        w1 = new OrthographyWord("przylepiec","pylepiec",a1); w1.save();
+        w1 = new OrthographyWord("rozrzewniane","rozewniane",a1); w1.save();
+        w1 = new OrthographyWord("hominida","ominida",a6); w1.save();
+        w1 = new OrthographyWord("homofon","omofon",a6); w1.save();
+        w1 = new OrthographyWord("hurtowna","urtowna",a6); w1.save();
+        w1 = new OrthographyWord("pohamowała","poamowała",a6); w1.save();
+        w1 = new OrthographyWord("szahady","szaady",a6); w1.save();
+        w1 = new OrthographyWord("telehity","teleity",a6); w1.save();
+        w1 = new OrthographyWord("rozniósł","roznisł",a4); w1.save();
+        w1 = new OrthographyWord("wróbla","wrbla",a4); w1.save();
+        w1 = new OrthographyWord("żydówka","żydwka",a4); w1.save();
+        w1 = new OrthographyWord("żużlówce","żużlwce",a4); w1.save();
     }
     public void initHangmanDb() {
-        Category.deleteAll(Category.class);
-        GameWords.deleteAll(GameWords.class);
+        HangmanCategory.deleteAll(HangmanCategory.class);
+        HangmanWords.deleteAll(HangmanWords.class);
+        HangmanWordsEng.deleteAll(HangmanWordsEng.class);
 
-        Category c1 = new Category("Zwierzęta", "Animals"); c1.save();
-        Category c2 = new Category("Owoce","Fruits"); c2.save();
+        HangmanCategory c1 = new HangmanCategory("Zwierzęta", "Animals"); c1.save();
+        HangmanCategory c2 = new HangmanCategory("Owoce","Fruits"); c2.save();
 
-        //Animals
-        GameWords gw1 = new GameWords("pies",c1); gw1.save();
-        gw1 = new GameWords("koń",c1); gw1.save();
+        //Animals PL
+        HangmanWords gw1 = new HangmanWords("pies",c1); gw1.save();
+        gw1 = new HangmanWords("koń",c1); gw1.save();
 
-        //Fruits
-        gw1 = new GameWords("banan",c2); gw1.save();
-        gw1 = new GameWords("jagoda",c2); gw1.save();
+        //Animials ENG
+        HangmanWordsEng hwe1 = new HangmanWordsEng("dog",c1); hwe1.save();
+        hwe1 = new HangmanWordsEng("horse",c1); hwe1.save();
+
+        //Fruits PL
+        gw1 = new HangmanWords("banan",c2); gw1.save();
+        gw1 = new HangmanWords("jagoda",c2); gw1.save();
+
+        //Fruits ENG
+        hwe1 = new HangmanWordsEng("apple",c2); hwe1.save();
 
     }
     public void initPolishLettersDb() {
@@ -150,7 +159,35 @@ public class MenuActivity extends Activity {
         pa = new PolishAlphabet("Z"); pa.save();
         pa = new PolishAlphabet("Ź"); pa.save();
         pa = new PolishAlphabet("Ż"); pa.save();
-
+    }
+    public void initEnglishLettersDb() {
+        EnglishAlphabet.deleteAll(EnglishAlphabet.class);
+        EnglishAlphabet ea = new EnglishAlphabet("A"); ea.save();
+        ea = new EnglishAlphabet("B"); ea.save();
+        ea = new EnglishAlphabet("C"); ea.save();
+        ea = new EnglishAlphabet("D"); ea.save();
+        ea = new EnglishAlphabet("E"); ea.save();
+        ea = new EnglishAlphabet("F"); ea.save();
+        ea = new EnglishAlphabet("G"); ea.save();
+        ea = new EnglishAlphabet("H"); ea.save();
+        ea = new EnglishAlphabet("I"); ea.save();
+        ea = new EnglishAlphabet("J"); ea.save();
+        ea = new EnglishAlphabet("K"); ea.save();
+        ea = new EnglishAlphabet("L"); ea.save();
+        ea = new EnglishAlphabet("M"); ea.save();
+        ea = new EnglishAlphabet("N"); ea.save();
+        ea = new EnglishAlphabet("O"); ea.save();
+        ea = new EnglishAlphabet("P"); ea.save();
+        ea = new EnglishAlphabet("Q"); ea.save();
+        ea = new EnglishAlphabet("R"); ea.save();
+        ea = new EnglishAlphabet("S"); ea.save();
+        ea = new EnglishAlphabet("T"); ea.save();
+        ea = new EnglishAlphabet("U"); ea.save();
+        ea = new EnglishAlphabet("V"); ea.save();
+        ea = new EnglishAlphabet("W"); ea.save();
+        ea = new EnglishAlphabet("X"); ea.save();
+        ea = new EnglishAlphabet("Y"); ea.save();
+        ea = new EnglishAlphabet("Z"); ea.save();
     }
 
 }

@@ -5,16 +5,16 @@ import com.orm.SugarRecord;
 /**
  * Created by sstarzak on 2014-12-03.
  */
-public class Category extends SugarRecord<Category> {
+public class HangmanCategory extends SugarRecord<HangmanCategory> {
 
     String plname;
 
     String engname;
 
-    public Category() {
+    public HangmanCategory() {
     }
 
-    public Category(String plname, String engname) {
+    public HangmanCategory(String plname, String engname) {
         this.engname = engname;
         this.plname = plname;
     }

@@ -1,8 +1,8 @@
 package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothClass;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,11 +24,13 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private List<PolishAlphabet> polish_letters;
 
-    private List<Category> categories;
+    private List<EnglishAlphabet> english_letters;
 
     private  Context context;
 
-    private List<GameWords> game_words;
+    private List<HangmanWords> hangman_words;
+
+    private List<HangmanWordsEng> hangman_english_words;
 
     private List <Button> button_array;
 
@@ -36,17 +38,21 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private TableLayout tl_buttons;
 
-    private TextView hangman_tw;
+    private TextView tv_hangman;
 
-    private TextView category_tw;
+    private TextView tv_category;
 
-    private long polish_letters_count;
+    private Intent intent_language;
+
+    private long letters_count;
 
     private long firstword;
 
     private long randomvalueforid;
 
     private int randomletterindex;
+
+    private String selected_language;
 
     private String hangman_puzzle;
 
@@ -62,66 +68,97 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
         context = getApplicationContext();
 
+        intent_language = getIntent();
+        selected_language = intent_language.getStringExtra("language");
+
         polish_letters = PolishAlphabet.listAll(PolishAlphabet.class);
-        polish_letters_count = PolishAlphabet.count(PolishAlphabet.class,null,null);
+        english_letters = EnglishAlphabet.listAll(EnglishAlphabet.class);
+
+        if(selected_language.equals("polish")) {
+            letters_count = PolishAlphabet.count(PolishAlphabet.class, null, null);
+            hangman_words = HangmanWords.listAll(HangmanWords.class);
+        }
+        else if(selected_language.equals("english")) {
+            letters_count = EnglishAlphabet.count(EnglishAlphabet.class,null,null);
+            hangman_english_words = HangmanWordsEng.listAll(HangmanWordsEng.class);
+        }
+
         button_array = new ArrayList<Button>();
         tl_buttons = (TableLayout) findViewById(R.id.hangman_buttons);
-
-        categories = Category.listAll(Category.class);
-        game_words = GameWords.listAll(GameWords.class);
 
         TableRow tw_buttons = new TableRow(this);
         TableRow.LayoutParams table_params = new TableRow.LayoutParams();
         table_params.height = 55;
+        table_params.width = 50;
 
         Display display = getWindowManager().getDefaultDisplay();
         Point p = new Point();
         display.getSize(p);
 
-        table_params.width = p.x / 9;
+       // table_params.width = p.x / 10;
 
         int iterator = 0;
-        for(PolishAlphabet pa : polish_letters) {
+        for(int a = 0; a < letters_count; a++) {
             Button temp_butt = new Button(this);
             temp_butt.setId(iterator++);
-            temp_butt.setText(pa.letter);
+            if(selected_language.equals("polish"))
+             temp_butt.setText(polish_letters.get(a).letter);
+            else if (selected_language.equals("english"))
+             temp_butt.setText(english_letters.get(a).letter);
             button_array.add(temp_butt);
         }
         iterator = 0;
         for( Button b : button_array) {
             b.setOnClickListener(this);
             tw_buttons.addView(b, table_params);
-            if( iterator++ == (polish_letters_count/4)-1) {
+            if( iterator++ == (letters_count /4)-1) {
                 iterator = 0;
                 tl_buttons.addView(tw_buttons);
                 tw_buttons = new TableRow(this);
             }
         }
-
+        if(selected_language.equals("english") && iterator > 0) {               //to dla angielskiej wersji
+            tl_buttons.addView(tw_buttons);
+        }
         hangmanTest();
     }
 
     public void hangmanTest() {
         attempts = 5;
-        firstword = game_words.get(1).getId();
-        randomvalueforid = (new Random()).nextInt((int) (GameWords.count(GameWords.class,null,null)));
+       //pl
+        if(selected_language.equals("polish")) {
+            firstword = hangman_words.get(1).getId();
+            randomvalueforid = (new Random()).nextInt((int) (HangmanWords.count(HangmanWords.class, null, null)));
+            hangman_word = hangman_words.get((int) randomvalueforid).word;
+        }else if (selected_language.equals("english")){
+            firstword = hangman_english_words.get(1).getId();
+            randomvalueforid = (new Random()).nextInt((int) (HangmanWordsEng.count(HangmanWordsEng.class, null, null)));
+            hangman_word = hangman_english_words.get((int) randomvalueforid).word;
+        }
         randomletterindex = 0;
         hangman_puzzle = "";
-        hangman_word = game_words.get((int) randomvalueforid).word;
 
-        hangman_tw = (TextView) findViewById(R.id.hangman_textView);
-        hangman_tw.setTextScaleX(2.0f);
+        tv_hangman = (TextView) findViewById(R.id.hangman_textView);
+        tv_hangman.setTextScaleX(2.0f);
 
-        category_tw = (TextView) findViewById(R.id.hangman_category_textView);
+        tv_category = (TextView) findViewById(R.id.hangman_category_textView);
+
+       if(selected_language.equals("polish"))
+           tv_category.setText("Kategoria: " + hangman_words.get((int) randomvalueforid).hangmanCategory.plname);
+       else if (selected_language.equals("english"))
+            tv_category.setText("Category: " + hangman_english_words.get((int) randomvalueforid).hangmanCategory.engname);
+
         randomletterindex = new Random().nextInt( hangman_word.length() );
-
 
         hangman_image = (ImageView) findViewById(R.id.hangman_image);
         hangman_image.setImageResource(R.drawable.hangman1);
 
-        for(int a = 0; a < polish_letters_count; a++) {
-            Button b = (Button) findViewById(a);
-            b.setVisibility(View.VISIBLE);
+        for(int a = 0; a < letters_count; a++) {
+
+               Button b = (Button) findViewById(a);
+               b.setVisibility(View.VISIBLE);
+
+
         }
 
         for(int a = 0; a < hangman_word.length(); a++) {
@@ -130,8 +167,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             else
                 hangman_puzzle += hangman_word.charAt(randomletterindex);
         }
-        category_tw.setText("Kategoria: " + game_words.get((int) randomvalueforid).category.plname);
-        hangman_tw.setText(hangman_puzzle);
+
+        tv_hangman.setText(hangman_puzzle);
     }
 //nie umiem wyrażeń regularnych
     public void hangmanGame( String selected_letter) {
@@ -144,7 +181,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                     hangman_temp += hangman_puzzle.charAt(a);
             }
             hangman_puzzle = hangman_temp;
-            hangman_tw.setText(hangman_puzzle);
+            tv_hangman.setText(hangman_puzzle);
         }
         else {
             attempts--;

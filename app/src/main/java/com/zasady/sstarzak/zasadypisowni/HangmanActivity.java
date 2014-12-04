@@ -31,6 +31,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private TextView hangman_tw;
 
+    private TextView category_tw;
+
     private long polish_letters_count;
 
     private long firstword;
@@ -43,7 +45,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private String hangman_word;
 
-    private int attempts = 4;
+    private int attempts = 5;
 
 
     @Override
@@ -87,7 +89,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
     }
 
     public void hangmanTest() {
-        attempts = 4;
+        attempts = 5;
         firstword = game_words.get(1).getId();
         randomvalueforid = (new Random()).nextInt((int) (GameWords.count(GameWords.class,null,null)));
         randomletterindex = 0;
@@ -95,8 +97,11 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         hangman_word = game_words.get((int) randomvalueforid).word;
 
         hangman_tw = (TextView) findViewById(R.id.hangman_textView);
+        hangman_tw.setTextScaleX(2.0f);
+
+        category_tw = (TextView) findViewById(R.id.hangman_category_textView);
         randomletterindex = new Random().nextInt( hangman_word.length() );
-        hangman_tw.setText("");
+
 
         hangman_image = (ImageView) findViewById(R.id.hangman_image);
         hangman_image.setImageResource(R.drawable.hangman1);
@@ -112,7 +117,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             else
                 hangman_puzzle += hangman_word.charAt(randomletterindex);
         }
-
+        category_tw.setText("Kategoria: " + game_words.get((int) randomvalueforid).category.plname);
         hangman_tw.setText(hangman_puzzle);
     }
 //nie umiem wyrażeń regularnych
@@ -131,11 +136,12 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         else {
             attempts--;
             switch (attempts) {
-                case 3: hangman_image.setImageResource(R.drawable.hangman2); break;
-                case 2: hangman_image.setImageResource(R.drawable.hangman3); break;
-                case 1: hangman_image.setImageResource(R.drawable.hangman4); break;
+                case 4: hangman_image.setImageResource(R.drawable.hangman2); break;
+                case 3: hangman_image.setImageResource(R.drawable.hangman3); break;
+                case 2: hangman_image.setImageResource(R.drawable.hangman4); break;
+                case 1: hangman_image.setImageResource(R.drawable.hangman5); break;
                 case 0: {
-                    hangman_image.setImageResource(R.drawable.hangman5);
+                    hangman_image.setImageResource(R.drawable.hangman6);
                     final Handler h = new Handler();
                     final Runnable r1 = new Runnable() {
                         @Override
@@ -148,7 +154,16 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                 }
             }
         }
-
+       if(hangman_word.equals(hangman_puzzle)) {
+           final Handler h = new Handler();
+           final Runnable r1 = new Runnable() {
+               @Override
+               public void run() {
+                   hangmanTest();
+               }
+           };
+           h.postDelayed(r1,3000);
+       }
     }
     @Override
     public void onClick(View view) {

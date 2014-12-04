@@ -21,9 +21,9 @@ public class MenuActivity extends Activity {
 
         //context.deleteDatabase("zasady.db");
 
-        //initOrthographyDb();
-        //initHangmanDb();
-        //initPolishLettersDb();
+        initOrthographyDb();
+        initHangmanDb();
+        initPolishLettersDb();
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {

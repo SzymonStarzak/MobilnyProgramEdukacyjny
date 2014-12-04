@@ -87,7 +87,6 @@ public class OrthographyActivity extends Activity {
         Button button2 = (Button) findViewById(R.id.orthography_answer2_button);
         TextView tw1 = (TextView) findViewById(R.id.partofword);
 
-
         final int diff = indexOfWordsDifference(word.full_word,word.part_word);
 
         String puzzle_word = word.part_word.substring(0,diff) + "..." + word.part_word.substring(diff);

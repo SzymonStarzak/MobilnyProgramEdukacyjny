@@ -11,7 +11,6 @@ public class GameWords extends SugarRecord<GameWords> {
 
     Category category;
 
-
     public GameWords() {
     }
 

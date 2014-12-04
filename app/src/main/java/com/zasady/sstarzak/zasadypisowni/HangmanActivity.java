@@ -1,14 +1,19 @@
 package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothClass;
+import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +25,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
     private List<PolishAlphabet> polish_letters;
 
     private List<Category> categories;
+
+    private  Context context;
 
     private List<GameWords> game_words;
 
@@ -53,6 +60,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
+        context = getApplicationContext();
+
         polish_letters = PolishAlphabet.listAll(PolishAlphabet.class);
         polish_letters_count = PolishAlphabet.count(PolishAlphabet.class,null,null);
         button_array = new ArrayList<Button>();
@@ -64,7 +73,12 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         TableRow tw_buttons = new TableRow(this);
         TableRow.LayoutParams table_params = new TableRow.LayoutParams();
         table_params.height = 55;
-        table_params.width = 55;
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point p = new Point();
+        display.getSize(p);
+
+        table_params.width = p.x / 9;
 
         int iterator = 0;
         for(PolishAlphabet pa : polish_letters) {
@@ -73,7 +87,6 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             temp_butt.setText(pa.letter);
             button_array.add(temp_butt);
         }
-
         iterator = 0;
         for( Button b : button_array) {
             b.setOnClickListener(this);
@@ -142,6 +155,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                 case 1: hangman_image.setImageResource(R.drawable.hangman5); break;
                 case 0: {
                     hangman_image.setImageResource(R.drawable.hangman6);
+                    Toast.makeText(context,hangman_word,Toast.LENGTH_LONG).show();
                     final Handler h = new Handler();
                     final Runnable r1 = new Runnable() {
                         @Override

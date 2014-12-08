@@ -44,6 +44,15 @@ public class LanguageActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button button4 = (Button) findViewById(R.id.english_words);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EnglishActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

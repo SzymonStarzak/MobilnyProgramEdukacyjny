@@ -27,17 +27,25 @@
         android:layout_below="@+id/ortography_button"
         android:layout_alignLeft="@+id/ortography_button"
         android:layout_alignStart="@+id/ortography_button"
-        android:layout_marginTop="50dp"
-        android:layout_alignRight="@+id/ortography_button"
-        android:layout_alignEnd="@+id/ortography_button" />
+        android:layout_marginTop="50dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wisielec ENG"
         android:id="@+id/hangman_eng_button"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="41dp"
         android:layout_below="@+id/hangman_button"
         android:layout_alignLeft="@+id/hangman_button"
         android:layout_alignStart="@+id/hangman_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angielskie Słówka"
+        android:id="@+id/english_words"
+        android:layout_below="@+id/hangman_eng_button"
+        android:layout_alignLeft="@+id/hangman_eng_button"
+        android:layout_alignStart="@+id/hangman_eng_button"
+        android:layout_marginTop="36dp" />
 </RelativeLayout>

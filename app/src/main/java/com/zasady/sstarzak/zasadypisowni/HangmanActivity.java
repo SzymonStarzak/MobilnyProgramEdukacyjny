@@ -10,6 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,9 +35,11 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private List <Button> button_array;
 
-    private ImageView hangman_image;
+    //private ImageView hangman_image;
 
     private TableLayout tl_buttons;
+
+    RelativeLayout rl;
 
     private TextView tv_hangman;
 
@@ -68,6 +71,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
         context = getApplicationContext();
 
+        rl = (RelativeLayout) findViewById(R.id.rl_hangman);
+
         intent_language = getIntent();
         selected_language = intent_language.getStringExtra("language");
 
@@ -89,13 +94,13 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         TableRow tw_buttons = new TableRow(this);
         TableRow.LayoutParams table_params = new TableRow.LayoutParams();
         table_params.height = 55;
-        table_params.width = 50;
+        //table_params.width = 50;
 
         Display display = getWindowManager().getDefaultDisplay();
         Point p = new Point();
         display.getSize(p);
 
-       // table_params.width = p.x / 10;
+        table_params.width = p.x / 10;
 
         int iterator = 0;
         for(int a = 0; a < letters_count; a++) {
@@ -111,7 +116,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         for( Button b : button_array) {
             b.setOnClickListener(this);
             tw_buttons.addView(b, table_params);
-            if( iterator++ == (letters_count /4)-1) {
+            if( iterator++ == 7) {
                 iterator = 0;
                 tl_buttons.addView(tw_buttons);
                 tw_buttons = new TableRow(this);
@@ -150,9 +155,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
         randomletterindex = new Random().nextInt( hangman_word.length() );
 
-        hangman_image = (ImageView) findViewById(R.id.hangman_image);
-        hangman_image.setImageResource(R.drawable.hangman1);
-
+        rl.setBackgroundResource(R.drawable.hangman1);
         for(int a = 0; a < letters_count; a++) {
 
                Button b = (Button) findViewById(a);
@@ -186,12 +189,12 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         else {
             attempts--;
             switch (attempts) {
-                case 4: hangman_image.setImageResource(R.drawable.hangman2); break;
-                case 3: hangman_image.setImageResource(R.drawable.hangman3); break;
-                case 2: hangman_image.setImageResource(R.drawable.hangman4); break;
-                case 1: hangman_image.setImageResource(R.drawable.hangman5); break;
+                case 4: rl.setBackgroundResource(R.drawable.hangman2); break;
+                case 3: rl.setBackgroundResource(R.drawable.hangman3); break;
+                case 2: rl.setBackgroundResource(R.drawable.hangman4); break;
+                case 1: rl.setBackgroundResource(R.drawable.hangman5); break;
                 case 0: {
-                    hangman_image.setImageResource(R.drawable.hangman6);
+                    rl.setBackgroundResource(R.drawable.hangman6);
                     Toast.makeText(context,hangman_word,Toast.LENGTH_LONG).show();
                     final Handler h = new Handler();
                     final Runnable r1 = new Runnable() {
@@ -200,7 +203,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                             hangmanTest();
                         }
                     };
-                    h.postDelayed(r1,3000);
+                    h.postDelayed(r1,2000);
                     break;
                 }
             }
@@ -213,7 +216,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                    hangmanTest();
                }
            };
-           h.postDelayed(r1,3000);
+           h.postDelayed(r1,2000);
+           Toast.makeText(getApplicationContext(),"Dobrze", Toast.LENGTH_SHORT).show();
        }
     }
     @Override

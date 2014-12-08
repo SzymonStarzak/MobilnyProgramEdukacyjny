@@ -23,6 +23,7 @@ public class MenuActivity extends Activity {
         initHangmanDb();
         initPolishLettersDb();
         initEnglishLettersDb();
+        initEnglishWordsDb();
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {
@@ -33,14 +34,22 @@ public class MenuActivity extends Activity {
             }
         });
     }
+    public void initEnglishWordsDb() {
+        EnglishWords.deleteAll(EnglishWords.class);
 
+        EnglishWords ew1 = new EnglishWords("chair","krzesło","komoda","podłoga","włosy",
+                "And I did want to demonstrate the fact that the chair can accommodate people."); ew1.save();
+        ew1 = new EnglishWords("oil","olej","woda","ropa","krem",
+                "And then they'd tow the sharks back to Purteen Harbor, boil them up, use the oil."); ew1.save();
+        ew1 = new EnglishWords("towel","ręcznik","serweta","zasłona","wieża",
+                "So we see Pranav here going into the supermarket and he's shopping for some paper towels."); ew1.save();
+
+    }
     public void initOrthographyDb() {
-    //    this.deleteDatabase("zasady.db");
         OrthographyAlphabet.deleteAll(OrthographyAlphabet.class);
         OrthographyRule.deleteAll(OrthographyRule.class);
         OrthographyRuleException.deleteAll(OrthographyRule.class);
         OrthographyWord.deleteAll(OrthographyWord.class);
-
 
         OrthographyAlphabet a1 = new OrthographyAlphabet("rz"); a1.save();
         OrthographyAlphabet a2 = new OrthographyAlphabet("ż");  a2.save(); //a.setId(2l);

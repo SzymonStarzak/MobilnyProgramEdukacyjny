@@ -42,6 +42,10 @@
             android:name=".HangmanActivity"
             android:label="@string/title_activity_hangman" >
         </activity>
+        <activity
+            android:name=".EnglishActivity"
+            android:label="@string/title_activity_english" >
+        </activity>
     </application>
 
 </manifest>

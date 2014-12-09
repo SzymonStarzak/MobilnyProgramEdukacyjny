@@ -50,6 +50,10 @@
             android:name=".NumberActivity"
             android:label="@string/title_activity_number" >
         </activity>
+        <activity
+            android:name=".FastOperationActivity"
+            android:label="@string/title_activity_fast_operation" >
+        </activity>
     </application>
 
 </manifest>

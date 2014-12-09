@@ -9,5 +9,6 @@
     <string name="title_activity_hangman">HangmanActivity</string>
     <string name="title_activity_english">EnglishActivity</string>
     <string name="title_activity_number">NumberActivity</string>
+    <string name="title_activity_fast_operation">FastOperationActivity</string>
 
 </resources>

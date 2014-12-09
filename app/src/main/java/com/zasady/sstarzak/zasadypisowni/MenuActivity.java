@@ -33,7 +33,17 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        Button number = (Button) findViewById(R.id.number_button);
+        number.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, NumberActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
     public void initEnglishWordsDb() {
         EnglishWords.deleteAll(EnglishWords.class);
 

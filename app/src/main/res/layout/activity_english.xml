@@ -65,7 +65,9 @@
             android:text="Przykład: "
             android:id="@+id/english_sentence_example"
             android:layout_gravity="center_horizontal"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:layout_weight="0.07"
+            android:maxLines="3" />
 
         <Space
             android:layout_width="match_parent"

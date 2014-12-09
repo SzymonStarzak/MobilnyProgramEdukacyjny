@@ -2,10 +2,12 @@ package com.zasady.sstarzak.zasadypisowni;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orm.query.Select;
 
@@ -27,6 +29,10 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
     private long english_words_count;
 
     private int random_value_for_id;
+
+    private int random_position_of_correct;
+
+    private int user_answer;
 
     private RadioButton rb1;
 
@@ -59,28 +65,70 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
 
         tv_example = (TextView) findViewById(R.id.english_sentence_example);
         tv_word = (TextView) findViewById(R.id.english_word);
-        englishWordsGame();
+        englishWordsTest();
     }
-
-    public void englishWordsGame() {
+    public void englishWordGame() {
+        if(random_position_of_correct == user_answer){
+            final Handler h = new Handler();
+            final Runnable r1 = new Runnable() {
+                @Override
+                public void run() {
+                    englishWordsTest();
+                }
+            };
+            h.postDelayed(r1,2000);
+            Toast.makeText(getApplicationContext(),"Dobrze",Toast.LENGTH_SHORT).show();
+        }else{
+            final Handler h = new Handler();
+            final Runnable r1 = new Runnable() {
+                @Override
+                public void run() {
+                    englishWordsTest();
+                }
+            };
+            h.postDelayed(r1,2000);
+            Toast.makeText(getApplicationContext(),"Źle",Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void englishWordsTest() {
         random_value_for_id = (new Random()).nextInt((int) (english_words_count));
         english_word = EnglishWords.findById(EnglishWords.class, english_first_word.getId() + random_value_for_id);
+        random_position_of_correct = new Random().nextInt(4);
 
-        tv_example.setText(english_word.example);
+        rb1.setChecked(false);
+        rb2.setChecked(false);
+        rb3.setChecked(false);
+        rb4.setChecked(false);
+
+        switch (random_position_of_correct) {
+            case 0: rb1.setText(english_word.correct);
+                    rb2.setText(english_word.fake1);
+                    rb3.setText(english_word.fake2);
+                    rb4.setText(english_word.fake3);break;
+            case 1: rb2.setText(english_word.correct);
+                    rb1.setText(english_word.fake1);
+                    rb3.setText(english_word.fake2);
+                    rb4.setText(english_word.fake3);break;
+            case 2: rb3.setText(english_word.correct);
+                    rb2.setText(english_word.fake1);
+                    rb1.setText(english_word.fake2);
+                    rb4.setText(english_word.fake3);break;
+            case 3: rb4.setText(english_word.correct);
+                    rb2.setText(english_word.fake1);
+                    rb3.setText(english_word.fake2);
+                    rb1.setText(english_word.fake3);break;
+        }
+        tv_example.append(english_word.example);
         tv_word.setText(english_word.word);
-        rb1.setText(english_word.correct);
-        rb2.setText(english_word.fake1);
-        rb3.setText(english_word.fake2);
-        rb4.setText(english_word.fake3);
     }
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.english_radio1: break;
-            case R.id.english_radio2: break;
-            case R.id.english_radio3: break;
-            case R.id.english_radio4: break;
-            case R.id.english_words_check_button: break;
+            case R.id.english_radio1: user_answer = 0; break;
+            case R.id.english_radio2: user_answer = 1; break;
+            case R.id.english_radio3: user_answer = 2; break;
+            case R.id.english_radio4: user_answer = 3; break;
+            case R.id.english_words_check_button: englishWordGame(); break;
         }
     }
 }

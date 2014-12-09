@@ -46,6 +46,10 @@
             android:name=".EnglishActivity"
             android:label="@string/title_activity_english" >
         </activity>
+        <activity
+            android:name=".NumberActivity"
+            android:label="@string/title_activity_number" >
+        </activity>
     </application>
 
 </manifest>

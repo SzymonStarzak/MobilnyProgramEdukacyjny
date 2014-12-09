@@ -157,11 +157,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
         rl.setBackgroundResource(R.drawable.hangman1);
         for(int a = 0; a < letters_count; a++) {
-
                Button b = (Button) findViewById(a);
                b.setVisibility(View.VISIBLE);
-
-
         }
 
         for(int a = 0; a < hangman_word.length(); a++) {

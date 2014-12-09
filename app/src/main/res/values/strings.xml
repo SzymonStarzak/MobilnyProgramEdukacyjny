@@ -8,5 +8,6 @@
     <string name="title_activity_orthography">Orthography</string>
     <string name="title_activity_hangman">HangmanActivity</string>
     <string name="title_activity_english">EnglishActivity</string>
+    <string name="title_activity_number">NumberActivity</string>
 
 </resources>

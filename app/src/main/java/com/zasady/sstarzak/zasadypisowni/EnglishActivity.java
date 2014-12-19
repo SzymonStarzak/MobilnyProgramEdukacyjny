@@ -118,7 +118,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
                     rb3.setText(english_word.fake2);
                     rb1.setText(english_word.fake3);break;
         }
-        tv_example.append(english_word.example);
+        tv_example.setText("Przykład: " + english_word.example);
         tv_word.setText(english_word.word);
     }
     @Override

@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="N"
-            android:id="@+id/answer_number_tv"
+            android:id="@+id/correct_number_tv"
             android:layout_column="7" />
     </TableRow>
 

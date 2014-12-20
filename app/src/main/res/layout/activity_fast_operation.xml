@@ -122,39 +122,13 @@
             android:text="/"
             android:id="@+id/button_div"
             android:layout_column="5" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="%"
             android:id="@+id/button_mod"
-            android:layout_column="2" />
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="^"
-            android:id="@+id/button_pow"
-            android:layout_column="3" />
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sqrt"
-            android:id="@+id/button_plus_sqr"
-            android:layout_column="4" />
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-sqrt"
-            android:id="@+id/button_minus_sqr"
-            android:layout_column="5" />
+            android:layout_column="6" />
     </TableRow>
 
 

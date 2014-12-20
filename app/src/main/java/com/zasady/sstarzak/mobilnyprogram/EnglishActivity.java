@@ -1,4 +1,4 @@
-package com.zasady.sstarzak.zasadypisowni;
+package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
 import android.os.Bundle;

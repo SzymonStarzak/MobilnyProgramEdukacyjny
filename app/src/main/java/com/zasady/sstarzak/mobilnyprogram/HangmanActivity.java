@@ -1,4 +1,4 @@
-package com.zasady.sstarzak.zasadypisowni;
+package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;

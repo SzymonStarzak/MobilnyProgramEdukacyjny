@@ -1,8 +1,9 @@
-package com.zasady.sstarzak.zasadypisowni;
+package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import org.apache.commons.jexl2.MapContext;
 import java.util.Random;
 
 
-public class FastOperationActivity extends Activity implements View.OnClickListener{
+public class FastOperationActivity extends Activity implements View.OnClickListener {
 
     CountDownTimer cdt;
 
@@ -70,6 +71,12 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
     String sOperator2;
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        cdt.cancel();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fast_operation);
@@ -99,10 +106,10 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
         cdt_time = 15000;
 
         fastOperationGame();
-
     }
+
     public void fastOperationGame() {
-            cdt = new CountDownTimer(cdt_time, 100) {
+        cdt = new CountDownTimer(cdt_time, 100) {
             @Override
             public void onTick(long l) {
                 countdown_tv.setText(String.valueOf(l / 1000));
@@ -110,7 +117,8 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
 
             @Override
             public void onFinish() {
-                countdown_tv.setText("0"); onIncorrectAnswer();
+                countdown_tv.setText("0");
+                onIncorrectAnswer();
             }
         }.start();
 
@@ -118,15 +126,15 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
 
         attempts = 2;
 
-        number1 = r.nextInt(2 * max_number)-15;
-        number2 = r.nextInt(max_number)+1;
-        number3 = r.nextInt(max_number)+1;
+        number1 = r.nextInt(2 * max_number) - 15;
+        number2 = r.nextInt(max_number) + 1;
+        number3 = r.nextInt(max_number) + 1;
 
         operator1 = r.nextInt(operators_count);
         operator2 = r.nextInt(operators_count);
 
         JexlEngine jexl = new JexlEngine();
-        Expression func = jexl.createExpression("x1"+getSymbolicOperator(operator1)+"x2"+getSymbolicOperator(operator2)+"x3");
+        Expression func = jexl.createExpression("x1" + getSymbolicOperator(operator1) + "x2" + getSymbolicOperator(operator2) + "x3");
         MapContext mc = new MapContext();
 
         mc.set("x1", number1);
@@ -147,7 +155,7 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
     public void fastOperationTest(String sOperator1, String sOperator2) {
 
         JexlEngine jexl = new JexlEngine();
-        Expression func = jexl.createExpression("x1"+sOperator1+"x2"+sOperator2+"x3");
+        Expression func = jexl.createExpression("x1" + sOperator1 + "x2" + sOperator2 + "x3");
         MapContext mc = new MapContext();
 
         mc.set("x1", number1);
@@ -158,61 +166,100 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
 
         if (answer_number.equals(correct_number)) {
             onCorrectAnswer();
-        }
-        else {
+        } else {
             onIncorrectAnswer();
         }
     }
 
     public void onCorrectAnswer() {
-        Toast.makeText(this,"Dobrze",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dobrze", Toast.LENGTH_SHORT).show();
         cdt.cancel();
-        fastOperationGame();
+        final Handler h = new Handler();
+        final Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                fastOperationGame();
+            }
+        };
+        h.postDelayed(r1, 2000);
     }
+
     public void onIncorrectAnswer() {
-        Toast.makeText(this,"Źle " + getSymbolicOperator(operator1) + " " + getSymbolicOperator(operator2),Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getSymbolicOperator(operator1) + " " + getSymbolicOperator(operator2), Toast.LENGTH_SHORT).show();
         cdt.cancel();
-        fastOperationGame();
+        final Handler h = new Handler();
+        final Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                fastOperationGame();
+            }
+        };
+        h.postDelayed(r1, 2000);
     }
+
     public String getSymbolicOperator(int operator) {
         switch (operator) {
-            case 0: return "+";
-            case 1: return "-";
-            case 2: return "*";
-            case 3: return "/";
-            case 4: return "%";
+            case 0:
+                return "+";
+            case 1:
+                return "-";
+            case 2:
+                return "*";
+            case 3:
+                return "/";
+            case 4:
+                return "%";
         }
         return "";
     }
+
     @Override
     public void onClick(View view) {
 
-        if(attempts == 2) {
+        if (attempts == 2) {
             switch (view.getId()) {
-                case R.id.button_plus: sOperator1 = getSymbolicOperator(0); break;
-                case R.id.button_minus: sOperator1 = getSymbolicOperator(1); break;
-                case R.id.button_times: sOperator1 = getSymbolicOperator(2); break;
-                case R.id.button_div: sOperator1 = getSymbolicOperator(3); break;
-                case R.id.button_mod: sOperator1 = getSymbolicOperator(4); break;
+                case R.id.button_plus:
+                    sOperator1 = getSymbolicOperator(0);
+                    break;
+                case R.id.button_minus:
+                    sOperator1 = getSymbolicOperator(1);
+                    break;
+                case R.id.button_times:
+                    sOperator1 = getSymbolicOperator(2);
+                    break;
+                case R.id.button_div:
+                    sOperator1 = getSymbolicOperator(3);
+                    break;
+                case R.id.button_mod:
+                    sOperator1 = getSymbolicOperator(4);
+                    break;
             }
             operator1_tv.setText(sOperator1);
             attempts--;
-        } else if( attempts == 1) {
+        } else if (attempts == 1) {
             switch (view.getId()) {
-                case R.id.button_plus: sOperator2 = getSymbolicOperator(0); break;
-                case R.id.button_minus: sOperator2 = getSymbolicOperator(1); break;
-                case R.id.button_times: sOperator2 = getSymbolicOperator(2); break;
-                case R.id.button_div: sOperator2 = getSymbolicOperator(3); break;
-                case R.id.button_mod: sOperator2 = getSymbolicOperator(4); break;
+                case R.id.button_plus:
+                    sOperator2 = getSymbolicOperator(0);
+                    break;
+                case R.id.button_minus:
+                    sOperator2 = getSymbolicOperator(1);
+                    break;
+                case R.id.button_times:
+                    sOperator2 = getSymbolicOperator(2);
+                    break;
+                case R.id.button_div:
+                    sOperator2 = getSymbolicOperator(3);
+                    break;
+                case R.id.button_mod:
+                    sOperator2 = getSymbolicOperator(4);
+                    break;
             }
             operator2_tv.setText(sOperator2);
             attempts--;
         }
 
         if (attempts == 0) {
-            fastOperationTest(sOperator1,sOperator2);
+            fastOperationTest(sOperator1, sOperator2);
         }
-
-
     }
 }

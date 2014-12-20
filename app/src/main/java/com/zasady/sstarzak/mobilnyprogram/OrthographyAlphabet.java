@@ -1,4 +1,4 @@
-package com.zasady.sstarzak.zasadypisowni;
+package com.zasady.sstarzak.mobilnyprogram;
 
 import com.orm.SugarRecord;
 

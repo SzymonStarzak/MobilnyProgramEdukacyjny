@@ -22,7 +22,7 @@
             android:value="com.zasady" />
 
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,28 +31,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.LanguageActivity"
+            android:name=".LanguageActivity"
             android:label="@string/title_activity_language" >
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.OrthographyActivity"
+            android:name=".OrthographyActivity"
             android:label="@string/title_activity_orthography" >
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.HangmanActivity"
+            android:name=".HangmanActivity"
             android:label="@string/title_activity_hangman" >
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.EnglishActivity"
+            android:name=".EnglishActivity"
             android:label="@string/title_activity_english" >
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.NumberActivity"
+            android:name=".NumberActivity"
             android:label="@string/title_activity_number" >
         </activity>
         <activity
-            android:name="com.zasady.sstarzak.mobilnyprogram.FastOperationActivity"
+            android:name=".FastOperationActivity"
             android:label="@string/title_activity_fast_operation" >
+        </activity>
+        <activity
+            android:name=".PeriodicTableActivity"
+            android:label="@string/title_activity_periodic_table"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

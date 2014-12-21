@@ -23,6 +23,15 @@ public class NumberActivity extends Activity {
             }
         });
 
+        Button b2 = (Button) findViewById(R.id.periodic_table_button);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),PeriodicTableActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

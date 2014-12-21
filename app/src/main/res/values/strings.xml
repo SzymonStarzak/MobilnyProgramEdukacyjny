@@ -10,5 +10,7 @@
     <string name="title_activity_english">EnglishActivity</string>
     <string name="title_activity_number">NumberActivity</string>
     <string name="title_activity_fast_operation">FastOperationActivity</string>
+    <string name="title_activity_chemistry">ChemistryActivity</string>
+    <string name="title_activity_periodic_table">PeriodicTableActivity</string>
 
 </resources>

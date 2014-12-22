@@ -1,7 +1,27 @@
-<TableLayout
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/periodic_table_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:stretchColumns="*">
-</TableLayout>
+    android:id="@+id/relative1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/periodic_table_layout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"></TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/element_tv"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+</RelativeLayout>

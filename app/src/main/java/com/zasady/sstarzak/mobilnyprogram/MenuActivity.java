@@ -211,7 +211,7 @@ public class MenuActivity extends Activity {
     }
     public void initElementsDb() {
         Element e = new Element("H","wodór","Hydrogen",1,1,1,"gaz","niemetal"); e.save();
-        e = new Element("He","hel","Helium",2,18,1,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("He","hel","Helium",2,18,1,"gaz","gaz_szlachetny"); e.save();
         e = new Element("Li","lit","Lithium",3,1,2,"stały","metal"); e.save();
         e = new Element("Be","beryl","Beryllium",4,2,2,"stały","metal"); e.save();
         e = new Element("B","bor","Boron",5,13,2,"stały","niemetal/półmetal"); e.save();
@@ -219,7 +219,7 @@ public class MenuActivity extends Activity {
         e = new Element("N","azot","Nitrogen",7,15,2,"gaz","niemetal"); e.save();
         e = new Element("O","tlen","Oxygen",8,16,2,"gaz","niemetal"); e.save();
         e = new Element("F","fluor","Fluorine",9,17,2,"gaz","niemetal"); e.save();
-        e = new Element("Ne","neon","Neon",10,18,2,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("Ne","neon","Neon",10,18,2,"gaz","gaz_szlachetny"); e.save();
         e = new Element("Na","sód","Sodium",11,1,3,"stały","metal"); e.save();
         e = new Element("Mg","magnez","Magnesium",12,2,3,"stały","metal"); e.save();
         e = new Element("Al","glin","Aluminium",13,13,3,"stały","metal/półmetal"); e.save();
@@ -227,7 +227,7 @@ public class MenuActivity extends Activity {
         e = new Element("P","fosfor","Phosphorus",15,15,3,"stały","niemetal/półmetal"); e.save();
         e = new Element("S","siarka","Sulfur",16,16,3,"stały","niemetal"); e.save();
         e = new Element("Cl","chlor","Chlorine",17,17,3,"gaz","niemetal"); e.save();
-        e = new Element("Ar","argon","Argon",18,18,3,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("Ar","argon","Argon",18,18,3,"gaz","gaz_szlachetny"); e.save();
         e = new Element("K","potas","Potassium",19,1,4,"stały","metal"); e.save();
         e = new Element("Ca","wapń","Calcium",20,2,4,"stały","metal"); e.save();
         e = new Element("Sc","skand","Scandium",21,3,4,"stały","metal"); e.save();
@@ -245,7 +245,7 @@ public class MenuActivity extends Activity {
         e = new Element("As","arsen","Arsenic",33,15,4,"stały","niemetal/półmetal"); e.save();
         e = new Element("Se","selen","Selenium",34,16,4,"stały","niemetal"); e.save();
         e = new Element("Br","brom","Bromine",35,17,4,"ciecz","niemetal"); e.save();
-        e = new Element("Kr","krypton","Krypton",36,18,4,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("Kr","krypton","Krypton",36,18,4,"gaz","gaz_szlachetny"); e.save();
         e = new Element("Rb","rubid","Rubidium",37,1,5,"stały","metal"); e.save();
         e = new Element("Sr","stront","Strontium",38,2,5,"stały","metal"); e.save();
         e = new Element("Y","itr","Yttrium",39,3,5,"stały","metal"); e.save();
@@ -263,7 +263,7 @@ public class MenuActivity extends Activity {
         e = new Element("Sb","antymon","Antimony",51,15,5,"stały","metal/półmetal"); e.save();
         e = new Element("Te","tellur","Tellurium",52,16,5,"stały","niemetal/półmetal"); e.save();
         e = new Element("I","jod","Iodine",53,17,5,"stały","niemetal"); e.save();
-        e = new Element("Xe","ksenon","Xenon",54,18,5,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("Xe","ksenon","Xenon",54,18,5,"gaz","gaz_szlachetny"); e.save();
         e = new Element("Cs","cez","Caesium",55,1,6,"stały","metal"); e.save();
         e = new Element("Ba","bar","Barium",56,2,6,"stały","metal"); e.save();
      //   e = new Element("Lu","lutet","Lutetium",71,3,6,"stały","metal"); e.save();
@@ -281,7 +281,7 @@ public class MenuActivity extends Activity {
         e = new Element("Bi","bizmut","Bismuth",83,15,6,"stały","metal"); e.save();
         e = new Element("Po","polon","Polonium",84,16,6,"stały","metal/półmetal"); e.save();
         e = new Element("At","astat","Astatine",85,17,6,"stały","niemetal/półmetal"); e.save();
-        e = new Element("Rn","radon","Radon",86,18,6,"gaz","niemetal/gaz_szlachetny"); e.save();
+        e = new Element("Rn","radon","Radon",86,18,6,"gaz","gaz_szlachetny"); e.save();
         e = new Element("Fr","frans","Francium",87,1,7,"stały","metal"); e.save();
         e = new Element("Ra","rad","Radium",88,2,7,"stały","metal"); e.save();
    //     e = new Element("Lr","lorens","Lawrencium",103,3,7,"stały","metal"); e.save();
@@ -300,5 +300,36 @@ public class MenuActivity extends Activity {
         e = new Element("Lv","liwermor","Livermorium",116,16,7,"prawdopodobnie_ciało_stałe","metal"); e.save();
         e = new Element("Uus","ununseptium","Ununseptium",117,17,7,"prawdopodobnie_ciało_stałe","prawdopodobnie_niemetal"); e.save();
         e = new Element("Uuo","ununoctium","Ununoctium",118,18,7,"prawdopodobnie_ciało_stałe","prawdopodobnie_niemetal"); e.save();
+        e = new Element("La","lantan","Lanthanum",57,0,6,"stały","metal"); e.save();
+        e = new Element("Ce","cer","Cerium",58,0,6,"stały","metal"); e.save();
+        e = new Element("Pr","prazeodym","Praseodymium",59,0,6,"stały","metal"); e.save();
+        e = new Element("Nd","neodym","Neodymium",60,0,6,"stały","metal"); e.save();
+        e = new Element("Pm","promet","Promethium",61,0,6,"stały","metal"); e.save();
+        e = new Element("Sm","samar","Samarium",62,0,6,"stały","metal"); e.save();
+        e = new Element("Eu","europ","Europium",63,0,6,"stały","metal"); e.save();
+        e = new Element("Gd","gadolin","Gadolinium",64,0,6,"stały","metal"); e.save();
+        e = new Element("Tb","terb","Terbium",65,0,6,"stały","metal"); e.save();
+        e = new Element("Dy","dysproz","Dysprosium",66,0,6,"stały","metal"); e.save();
+        e = new Element("Ho","holm","Holmium",67,0,6,"stały","metal"); e.save();
+        e = new Element("Er","erb","Erbium",68,0,6,"stały","metal"); e.save();
+        e = new Element("Tm","tul","Thulium",69,0,6,"stały","metal"); e.save();
+        e = new Element("Yb","iterb","Ytterbium",70,0,6,"stały","metal"); e.save();
+        e = new Element("Lu","lutet","Lutetium",71,3,6,"stały","metal"); e.save();
+        e = new Element("Ac","aktyn","Actinium",89,0,7,"stały","metal"); e.save();
+        e = new Element("Th","tor","Thorium",90,0,7,"stały","metal"); e.save();
+        e = new Element("Pa","protaktyn","Protactinium",91,0,7,"stały","metal"); e.save();
+        e = new Element("U","uran","Uranium",92,0,7,"stały","metal"); e.save();
+        e = new Element("Np","neptun","Neptunium",93,0,7,"stały","metal"); e.save();
+        e = new Element("Pu","pluton","Plutonium",94,0,7,"stały","metal"); e.save();
+        e = new Element("Am","ameryk","Americium",95,0,7,"stały","metal"); e.save();
+        e = new Element("Cm","kiur","Curium",96,0,7,"stały","metal"); e.save();
+        e = new Element("Bk","berkel","Berkelium",97,0,7,"stały","metal"); e.save();
+        e = new Element("Cf","kaliforn","Californium",98,0,7,"stały","metal"); e.save();
+        e = new Element("Es","einstein","Einsteinium",99,0,7,"stały","metal"); e.save();
+        e = new Element("Fm","ferm","Fermium",100,0,7,"stały","metal"); e.save();
+        e = new Element("Md","mendelew","Mendelevium",101,0,7,"stały","metal"); e.save();
+        e = new Element("No","nobel","Nobelium",102,0,7,"stały","metal"); e.save();
+        e = new Element("Lr","lorens","Lawrencium",103,3,7,"stały","metal"); e.save();
+
     }
 }

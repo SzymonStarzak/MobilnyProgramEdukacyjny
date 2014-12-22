@@ -266,7 +266,7 @@ public class MenuActivity extends Activity {
         e = new Element("Xe","ksenon","Xenon",54,18,5,"gaz","niemetal/gaz_szlachetny"); e.save();
         e = new Element("Cs","cez","Caesium",55,1,6,"stały","metal"); e.save();
         e = new Element("Ba","bar","Barium",56,2,6,"stały","metal"); e.save();
-        e = new Element("Lu","lutet","Lutetium",71,3,6,"stały","metal"); e.save();
+     //   e = new Element("Lu","lutet","Lutetium",71,3,6,"stały","metal"); e.save();
         e = new Element("Hf","hafn","Hafnium",72,4,6,"stały","metal"); e.save();
         e = new Element("Ta","tantal","Tantalum",73,5,6,"stały","metal"); e.save();
         e = new Element("W","wolfram","Tungsten",74,6,6,"stały","metal"); e.save();
@@ -284,7 +284,7 @@ public class MenuActivity extends Activity {
         e = new Element("Rn","radon","Radon",86,18,6,"gaz","niemetal/gaz_szlachetny"); e.save();
         e = new Element("Fr","frans","Francium",87,1,7,"stały","metal"); e.save();
         e = new Element("Ra","rad","Radium",88,2,7,"stały","metal"); e.save();
-        e = new Element("Lr","lorens","Lawrencium",103,3,7,"stały","metal"); e.save();
+   //     e = new Element("Lr","lorens","Lawrencium",103,3,7,"stały","metal"); e.save();
         e = new Element("Rf","rutherford","Rutherfordium",104,4,7,"prawdopodobnie_ciało_stałe","metal"); e.save();
         e = new Element("Db","dubn","Dubnium",105,5,7,"prawdopodobnie_ciało_stałe","metal"); e.save();
         e = new Element("Sg","seaborg","Seaborgium",106,6,7,"prawdopodobnie_ciało_stałe","metal"); e.save();

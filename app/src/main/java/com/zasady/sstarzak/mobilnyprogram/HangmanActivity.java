@@ -105,6 +105,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         for(int a = 0; a < letters_count; a++) {
             Button temp_butt = new Button(this);
             temp_butt.setId(iterator++);
+            temp_butt.setTextSize(10);
             if(selected_language.equals("polish"))
              temp_butt.setText(polish_letters.get(a).letter);
             else if (selected_language.equals("english"))

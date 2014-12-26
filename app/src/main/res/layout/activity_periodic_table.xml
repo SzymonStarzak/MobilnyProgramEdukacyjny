@@ -4,15 +4,17 @@
     android:id="@+id/relative1"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/periodic_table_layout"
         android:layout_marginBottom="40dp"
         android:layout_centerInParent="true"
-        android:id="@+id/periodic_table_layout"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"></TableLayout>
+        android:layout_centerHorizontal="true"
+        android:stretchColumns="*"
+        android:shrinkColumns="*"></TableLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,5 +25,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+
+
+
 
 </RelativeLayout>

@@ -17,14 +17,14 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-        context.deleteDatabase("zasady.db");
+      /*  context.deleteDatabase("zasady.db");
 
         initOrthographyDb();
         initHangmanDb();
         initPolishLettersDb();
         initEnglishLettersDb();
         initEnglishWordsDb();
-        initElementsDb();
+        initElementsDb();*/
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {

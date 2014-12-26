@@ -52,11 +52,13 @@
         </activity>
         <activity
             android:name=".FastOperationActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
             android:label="@string/title_activity_fast_operation" >
         </activity>
         <activity
             android:name=".PeriodicTableActivity"
-            android:label="@string/title_activity_periodic_table"
+            android:label="PeriodicTableActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="landscape">
         </activity>
     </application>

@@ -17,7 +17,8 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/radioGroupEng">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -64,7 +65,6 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Przykład: "
             android:id="@+id/english_sentence_example"
-            android:layout_gravity="center_horizontal"
             android:singleLine="true"
             android:layout_weight="0.07"
             android:maxLines="3" />

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,10 +96,8 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         english_word = EnglishWords.findById(EnglishWords.class, english_first_word.getId() + random_value_for_id);
         random_position_of_correct = new Random().nextInt(4);
 
-        rb1.setChecked(false);
-        rb2.setChecked(false);
-        rb3.setChecked(false);
-        rb4.setChecked(false);
+        RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupEng);
+        rg.clearCheck();
 
         switch (random_position_of_correct) {
             case 0: rb1.setText(english_word.correct);

@@ -12,5 +12,7 @@
     <string name="title_activity_fast_operation">FastOperationActivity</string>
     <string name="title_activity_chemistry">ChemistryActivity</string>
     <string name="title_activity_periodic_table">PeriodicTableActivity</string>
+    <string name="title_activity_physic_units">PhysicUnitsActivity</string>
+    <string name="title_activity_numeral_system">NumeralSystemActivity</string>
 
 </resources>

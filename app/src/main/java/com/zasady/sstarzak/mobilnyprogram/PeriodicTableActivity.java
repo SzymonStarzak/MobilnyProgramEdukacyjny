@@ -35,10 +35,14 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
 
     long randomValueForId;
 
+    String language;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_periodic_table);
+
+        language = getIntent().getStringExtra("language");
 
         Display display = getWindowManager().getDefaultDisplay();
         Point p = new Point();
@@ -49,11 +53,9 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
         elements = Element.listAll(Element.class);
 
         tr_params = new TableRow.LayoutParams();
-        //    tr_params.width = 65;
-        //   tr_params.height = 50;
 
         tr_params.width = p.x / 18;
-        tr_params.height = p.y / 14;
+        tr_params.height = p.y / 13;
 
         int index = 0;
         for (int a = 0; a < 10 * 18; a++) {
@@ -92,7 +94,12 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-BoldItalic.ttf");
         element_tv.setTypeface(tf);
         element_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-        element_tv.setText(elements.get((int) randomValueForId).name);
+
+        if(language.equals("polish")) {
+            element_tv.setText(elements.get((int) randomValueForId).name);
+        } else if (language.equals("english")){
+            element_tv.setText(elements.get((int) randomValueForId).english_name);
+        }
     }
 
     public int colorElement(Element e) {

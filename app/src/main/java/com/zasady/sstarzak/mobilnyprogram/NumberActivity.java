@@ -28,6 +28,26 @@ public class NumberActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),PeriodicTableActivity.class);
+                intent.putExtra("language","polish");
+                startActivity(intent);
+            }
+        });
+
+        Button b3 = (Button) findViewById(R.id.eng_periodic_table_button);
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),PeriodicTableActivity.class);
+                intent.putExtra("language","english");
+                startActivity(intent);
+            }
+        });
+
+        Button b4 = (Button) findViewById(R.id.numeral_game_button);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),NumeralSystemActivity.class);
                 startActivity(intent);
             }
         });

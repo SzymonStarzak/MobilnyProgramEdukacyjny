@@ -29,5 +29,25 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="55dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tablica Mendelejewa ENG"
+        android:id="@+id/eng_periodic_table_button"
+        android:layout_marginTop="51dp"
+        android:layout_below="@+id/periodic_table_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Systemy Liczbowe"
+        android:id="@+id/numeral_game_button"
+        android:layout_below="@+id/eng_periodic_table_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="47dp" />
+
 
 </RelativeLayout>

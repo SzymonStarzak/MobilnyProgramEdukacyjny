@@ -39,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Binarny"
         android:id="@+id/textView4"
-        android:layout_above="@+id/radioGroup3"
+        android:layout_above="@+id/radioGroupBin"
         android:layout_toRightOf="@+id/textView3"
         android:layout_toEndOf="@+id/textView3"
         android:layout_marginLeft="80dp"
@@ -55,7 +55,7 @@
         android:layout_above="@+id/numeral_check_button"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2"
-        android:id="@+id/radioGroup">
+        android:id="@+id/radioGroupDec">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -88,19 +88,19 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_marginBottom="29dp"
-        android:layout_alignRight="@+id/radioGroup2"
-        android:layout_alignEnd="@+id/radioGroup2" />
+        android:layout_alignRight="@+id/radioGroupHex"
+        android:layout_alignEnd="@+id/radioGroupHex" />
 
     <RadioGroup
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignTop="@+id/radioGroup"
+        android:layout_alignTop="@+id/radioGroupDec"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3"
         android:layout_alignRight="@+id/textView3"
         android:layout_alignEnd="@+id/textView3"
         android:layout_above="@+id/numeral_check_button"
-        android:id="@+id/radioGroup2">
+        android:id="@+id/radioGroupHex">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -127,11 +127,11 @@
     <RadioGroup
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignTop="@+id/radioGroup2"
+        android:layout_alignTop="@+id/radioGroupHex"
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignStart="@+id/textView4"
         android:layout_above="@+id/numeral_check_button"
-        android:id="@+id/radioGroup3"
+        android:id="@+id/radioGroupBin"
         android:layout_alignRight="@+id/textView4"
         android:layout_alignEnd="@+id/textView4">
 

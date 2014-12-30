@@ -89,7 +89,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
     public void periodicTableGame() {
         first_element = elements.get(1);
         element_tv = (TextView) findViewById(R.id.element_tv);
-        randomValueForId = first_element.getId() + new Random().nextInt((int) Element.count(Element.class, null, null)-1);
+        randomValueForId = first_element.getId() + new Random().nextInt((int) Element.count(Element.class, null, null)-2);
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-BoldItalic.ttf");
         element_tv.setTypeface(tf);
@@ -134,8 +134,6 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
     }
 
     public void onCorrectAnswer() {
-
-
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
             @Override
@@ -148,7 +146,6 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
     }
 
     public void onIncorrectAnswer() {
-
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
             @Override

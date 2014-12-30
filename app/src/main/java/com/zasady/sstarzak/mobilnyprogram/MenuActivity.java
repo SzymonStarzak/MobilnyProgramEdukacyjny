@@ -3,6 +3,11 @@ package com.zasady.sstarzak.mobilnyprogram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,20 +16,29 @@ import android.widget.Button;
 public class MenuActivity extends Activity {
 
     private Context context;
+
+    String DB_FULL_PATH = "zasady.db";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-        context.deleteDatabase("zasady.db");
+        if(!checkDataBase()) {
+            context.deleteDatabase(DB_FULL_PATH);
+            initOrthographyDb();
+            initHangmanDb();
+            initPolishLettersDb();
+            initEnglishLettersDb();
+            initEnglishWordsDb();
+            initElementsDb();
+        }
+        Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "PTF76F.ttf");
 
-        initOrthographyDb();
-        initHangmanDb();
-        initPolishLettersDb();
-        initEnglishLettersDb();
-        initEnglishWordsDb();
-        initElementsDb();
+        GradientDrawable gd = new GradientDrawable();
+        gd.setCornerRadius(25);
+        gd.setStroke(3, Color.RED);
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +48,8 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
+        language.setBackground(gd);
+        language.setTypeface(tf);
 
         Button number = (Button) findViewById(R.id.number_button);
         number.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +59,18 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
+        number.setBackground(gd);
+        number.setTypeface(tf);
+
+        Button about = (Button) findViewById(R.id.about_app_button);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        about.setBackground(gd);
+        about.setTypeface(tf);
 
         Button finish = (Button) findViewById(R.id.exit_button);
         finish.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +79,9 @@ public class MenuActivity extends Activity {
                 finish();
             }
         });
+        finish.setBackground(gd);
+        finish.setTypeface(tf);
+
     }
 
     public void initEnglishWordsDb() {
@@ -339,5 +370,16 @@ public class MenuActivity extends Activity {
         e = new Element("No","nobel","Nobelium",102,0,7,"stały","metal"); e.save();
         e = new Element("Lr","lorens","Lawrencium",103,3,7,"stały","metal"); e.save();
 
+    }
+
+    private boolean checkDataBase() {
+        SQLiteDatabase checkDB = null;
+        try {
+            checkDB = SQLiteDatabase.openDatabase(getApplicationContext().getDatabasePath(DB_FULL_PATH).getPath(), null,
+                    SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
+        } catch (SQLiteException e) {
+        }
+        return checkDB != null ? true : false;
     }
 }

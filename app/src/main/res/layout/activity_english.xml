@@ -65,9 +65,10 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Przykład: "
             android:id="@+id/english_sentence_example"
-            android:singleLine="true"
+            android:singleLine="false"
             android:layout_weight="0.07"
-            android:maxLines="3" />
+            android:maxLines="3"
+            android:layout_gravity="center_horizontal" />
 
         <Space
             android:layout_width="match_parent"

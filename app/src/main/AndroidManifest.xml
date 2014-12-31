@@ -33,22 +33,27 @@
         </activity>
         <activity
             android:name=".LanguageActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
             android:label="@string/title_activity_language" >
         </activity>
         <activity
             android:name=".OrthographyActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
             android:label="@string/title_activity_orthography" >
         </activity>
         <activity
             android:name=".HangmanActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
             android:label="@string/title_activity_hangman" >
         </activity>
         <activity
             android:name=".EnglishActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
             android:label="@string/title_activity_english" >
         </activity>
         <activity
             android:name=".NumberActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
             android:label="@string/title_activity_number" >
         </activity>
         <activity

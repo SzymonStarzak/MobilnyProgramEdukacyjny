@@ -15,4 +15,32 @@
     <string name="title_activity_physic_units">PhysicUnitsActivity</string>
     <string name="title_activity_numeral_system">NumeralSystemActivity</string>
 
+    <string-array name="titles_language">
+        <item>Nauka ortografii</item>
+        <item>Nauka słow</item>
+        <item>Nauka słów</item>
+        <item>Nauka angielskiego</item>
+    </string-array>
+
+    <string-array name="descs_language">
+        <item> Desc 11</item>
+        <item> Desc 12</item>
+        <item> Desc 13</item>
+        <item> Desc 14</item>
+    </string-array>
+
+    <string-array name="titles_science">
+        <item>Szybkie operacje</item>
+        <item>Tablica Mendelejewa</item>
+        <item>Tablica Mendelejewa</item>
+        <item>Systemy liczbowe</item>
+    </string-array>
+
+    <string-array name="descs_science">
+        <item> Desc 11</item>
+        <item> Desc 12</item>
+        <item> Desc 13</item>
+        <item> Desc 14</item>
+    </string-array>
+
 </resources>

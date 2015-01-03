@@ -48,7 +48,7 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
-        language.setBackground(gd);
+        language.setBackground(gd);  //API 17 !
         language.setTypeface(tf);
 
         Button number = (Button) findViewById(R.id.number_button);

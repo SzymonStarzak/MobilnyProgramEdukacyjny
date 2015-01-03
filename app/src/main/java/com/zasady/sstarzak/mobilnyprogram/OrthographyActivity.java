@@ -2,7 +2,14 @@ package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,12 +48,45 @@ public class OrthographyActivity extends Activity {
 
     Context context;
 
+    Button button1;
+
+    Button button2;
+
+    TextView tw1;
+
+    String answer;
+
    // private long random
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orthography);
+
+        button1 = (Button) findViewById(R.id.orthography_answer1_button);
+        button2 = (Button) findViewById(R.id.orthography_answer2_button);
+        tw1 = (TextView) findViewById(R.id.partofword);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point p = new Point();
+        display.getSize(p);
+
+        GradientDrawable gd = new GradientDrawable();
+        gd.setCornerRadius(100);
+        gd.setStroke(10, Color.LTGRAY);
+        gd.setSize(p.x / 4, p.x / 4);
+
+
+        Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "PTF76F.ttf");
+        button1.setTypeface(tf);
+        button1.setBackground(gd);
+        button1.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+        button2.setTypeface(tf);
+        button2.setBackground(gd);
+        button2.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+        tw1.setTypeface(tf);
+        tw1.setTextScaleX(1.4f);
 
         alphabetcount = OrthographyAlphabet.count(OrthographyAlphabet.class, null, null);
         selectalphabet = Select.from(OrthographyAlphabet.class);
@@ -62,7 +102,7 @@ public class OrthographyActivity extends Activity {
     }
 
     public void orthographyTest() {
-
+        tw1.setTextColor(Color.BLACK);
         //losowanie liter o nieparzystej liczbie pozycyjnej, id + 1 będzie alternatywną odpowiedzią
         do {
             randomvalueforid = (new Random()).nextInt((int) (alphabetcount));
@@ -80,9 +120,7 @@ public class OrthographyActivity extends Activity {
         filteredwordscount = (long) filteredwords.size();
         orthographyWord = filteredwords.get((new Random()).nextInt((int) filteredwordscount));
 
-        Button button1 = (Button) findViewById(R.id.orthography_answer1_button);
-        Button button2 = (Button) findViewById(R.id.orthography_answer2_button);
-        TextView tw1 = (TextView) findViewById(R.id.partofword);
+
 
         final int diff = indexOfWordsDifference(orthographyWord.full_word, orthographyWord.part_word);
 
@@ -94,31 +132,57 @@ public class OrthographyActivity extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String answer = orthographyWord.part_word.substring(0,diff) + letter.pl_str + orthographyWord.part_word.substring(diff);
+                 answer = orthographyWord.part_word.substring(0,diff) + letter.pl_str + orthographyWord.part_word.substring(diff);
 
                 if(answer.equals(orthographyWord.full_word)) {
-                    Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
+                    onCorrectAnswer();
 
                 } else {
-                    Toast.makeText(context,"Źle",Toast.LENGTH_SHORT).show();
+                    onIncorrectAnswer();
                 }
-                orthographyTest();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String answer = orthographyWord.part_word.substring(0,diff) + letterpair.pl_str + orthographyWord.part_word.substring(diff);
+                 answer = orthographyWord.part_word.substring(0,diff) + letterpair.pl_str + orthographyWord.part_word.substring(diff);
 
                 if(answer.equals(orthographyWord.full_word)) {
-                    Toast.makeText(context,"Dobrze",Toast.LENGTH_SHORT).show();
+                    onCorrectAnswer();
 
                 } else {
-                    Toast.makeText(context,"Źle",Toast.LENGTH_SHORT).show();
+                   onIncorrectAnswer();
                 }
-                orthographyTest();
             }
         });
+    }
+
+    public void onCorrectAnswer() {
+        final Handler h = new Handler();
+        final Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                orthographyTest();
+            }
+        };
+        h.postDelayed(r1, 2000);
+        tw1.setText(answer);
+        tw1.setTextColor(Color.GREEN);
+        Toast.makeText(this, "Dobrze", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onIncorrectAnswer() {
+        final Handler h = new Handler();
+        final Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                orthographyTest();
+            }
+        };
+        h.postDelayed(r1, 2000);
+        tw1.setText(answer);
+        tw1.setTextColor(Color.RED);
+        Toast.makeText(this, "Źle", Toast.LENGTH_SHORT).show();
     }
     //nie znalazłem żadnej metody string która by zwracała index różnych znaków
     int indexOfWordsDifference(String full_word, String part_word) {

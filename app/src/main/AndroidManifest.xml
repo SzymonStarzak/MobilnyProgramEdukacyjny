@@ -23,7 +23,8 @@
 
         <activity
             android:name=".MenuActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="locked"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,12 +39,14 @@
         </activity>
         <activity
             android:name=".OrthographyActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="locked"
             android:label="@string/title_activity_orthography" >
         </activity>
         <activity
             android:name=".HangmanActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="locked"
             android:label="@string/title_activity_hangman" >
         </activity>
         <activity
@@ -54,10 +57,12 @@
         <activity
             android:name=".NumberActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="locked"
             android:label="@string/title_activity_number" >
         </activity>
         <activity
             android:name=".FastOperationActivity"
+            android:screenOrientation="locked"
             android:label="@string/title_activity_fast_operation"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

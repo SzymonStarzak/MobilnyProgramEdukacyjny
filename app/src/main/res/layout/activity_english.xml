@@ -1,63 +1,55 @@
 <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="153dp"
-        android:weightSum="1">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/english_relative_layout"
+    android:background="@drawable/zeszyt">
 
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/radioGroupEng">
+            android:id="@+id/radioGroupEng"
+            android:layout_below="@+id/english_sentence_example"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New RadioButton"
             android:id="@+id/english_radio1"
-            android:layout_gravity="center_horizontal"
-            android:checked="false" />
+            android:checked="false"
+            android:layout_gravity="center_horizontal" />
 
-        <RadioButton
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New RadioButton"
+                android:id="@+id/english_radio3"
+                android:checked="false" />
+
+            <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New RadioButton"
             android:id="@+id/english_radio2"
-            android:layout_gravity="center_horizontal"
-            android:checked="false" />
+            android:checked="false"
+                android:layout_gravity="center_horizontal" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New RadioButton"
-            android:id="@+id/english_radio3"
-            android:layout_gravity="center_horizontal"
-            android:checked="false" />
-
-        <RadioButton
+            <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New RadioButton"
             android:id="@+id/english_radio4"
-            android:layout_gravity="center_horizontal"
-            android:checked="false" />
+                android:checked="false" />
         </RadioGroup>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.26" />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,22 +60,25 @@
             android:singleLine="false"
             android:layout_weight="0.07"
             android:maxLines="3"
-            android:layout_gravity="center_horizontal" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.20" />
+            android:layout_below="@+id/english_word"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp" />
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sprawdź"
             android:id="@+id/english_words_check_button"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,7 +86,5 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/english_word"
-        android:layout_marginTop="111dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

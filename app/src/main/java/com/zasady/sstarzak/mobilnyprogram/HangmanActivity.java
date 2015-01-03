@@ -159,8 +159,13 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-Italic.ttf");
+        GradientDrawable gd = new GradientDrawable();
+        gd.setStroke(1, 0xFF000000);
+        gd.setCornerRadius(5);
+        gd.setColor(Color.rgb(250, 128, 114));
         tv_category = (TextView) findViewById(R.id.hangman_category_textView);
         tv_category.setTypeface(tf);
+        tv_category.setBackground(gd);
 
         if (selected_language.equals("polish"))
             tv_category.setText("Kategoria: " + hangman_words.get((int) randomvalueforid).hangmanCategory.plname);

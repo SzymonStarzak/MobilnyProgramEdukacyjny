@@ -1,14 +1,17 @@
 package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orm.query.Select;
 
@@ -43,10 +46,14 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
 
     private RadioButton rb4;
 
+    private RelativeLayout rl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_english);
+
+        rl = (RelativeLayout) findViewById(R.id.english_relative_layout);
 
         ew = EnglishWords.listAll(EnglishWords.class);
         english_words_count = EnglishWords.count(EnglishWords.class, null, null);
@@ -61,40 +68,58 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         rb4 = (RadioButton) findViewById(R.id.english_radio4);
         rb4.setOnClickListener(this);
 
+        GradientDrawable gd = new GradientDrawable();
+        gd.setCornerRadius(50);
+        gd.setStroke(10, Color.LTGRAY);
+
         Button b1 = (Button) findViewById(R.id.english_words_check_button);
+        b1.setBackground(gd);
+
         b1.setOnClickListener(this);
 
+        Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "PTF76F.ttf");
+        Typeface tf2 = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-Italic.ttf");
+
         tv_example = (TextView) findViewById(R.id.english_sentence_example);
+        tv_example.setTypeface(tf2);
+        tv_example.setTextColor(Color.BLUE);
+
         tv_word = (TextView) findViewById(R.id.english_word);
+        tv_word.setTypeface(tf);
         englishWordsTest();
     }
     public void englishWordGame() {
+
         if(random_position_of_correct == user_answer){
             final Handler h = new Handler();
             final Runnable r1 = new Runnable() {
                 @Override
                 public void run() {
+                    rl.setBackgroundResource(R.drawable.zeszyt);
                     englishWordsTest();
                 }
             };
             h.postDelayed(r1,2000);
-            Toast.makeText(getApplicationContext(),"Dobrze",Toast.LENGTH_SHORT).show();
+            rl.setBackgroundResource(R.drawable.zeszyt_yes);
+
         }else{
             final Handler h = new Handler();
             final Runnable r1 = new Runnable() {
                 @Override
                 public void run() {
+                    rl.setBackgroundResource(R.drawable.zeszyt);
                     englishWordsTest();
                 }
             };
             h.postDelayed(r1,2000);
-            Toast.makeText(getApplicationContext(),"Źle",Toast.LENGTH_SHORT).show();
+            rl.setBackgroundResource(R.drawable.zeszyt_no);
         }
     }
     public void englishWordsTest() {
         random_value_for_id = (new Random()).nextInt((int) (english_words_count));
         english_word = EnglishWords.findById(EnglishWords.class, english_first_word.getId() + random_value_for_id);
         random_position_of_correct = new Random().nextInt(4);
+        user_answer = -1;
 
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupEng);
         rg.clearCheck();

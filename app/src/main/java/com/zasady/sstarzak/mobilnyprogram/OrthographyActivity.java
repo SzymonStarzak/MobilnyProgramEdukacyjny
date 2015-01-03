@@ -13,7 +13,6 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.orm.query.Select;
 
@@ -102,7 +101,7 @@ public class OrthographyActivity extends Activity {
     }
 
     public void orthographyTest() {
-        tw1.setTextColor(Color.BLACK);
+
         //losowanie liter o nieparzystej liczbie pozycyjnej, id + 1 będzie alternatywną odpowiedzią
         do {
             randomvalueforid = (new Random()).nextInt((int) (alphabetcount));
@@ -126,9 +125,12 @@ public class OrthographyActivity extends Activity {
 
         String puzzle_word = orthographyWord.part_word.substring(0,diff) + "..." + orthographyWord.part_word.substring(diff);
 
+        button1.setEnabled(true);
+        button2.setEnabled(true);
         button1.setText(letter.pl_str);
         button2.setText(letterpair.pl_str);
         tw1.setText(puzzle_word);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,13 +164,16 @@ public class OrthographyActivity extends Activity {
         final Runnable r1 = new Runnable() {
             @Override
             public void run() {
+                tw1.setTextColor(Color.BLACK);
                 orthographyTest();
             }
         };
-        h.postDelayed(r1, 2000);
+        h.postDelayed(r1, 1000);
         tw1.setText(answer);
+        MyViewAnimations.myNegativeScaleAnimation(tw1,1000);
         tw1.setTextColor(Color.GREEN);
-        Toast.makeText(this, "Dobrze", Toast.LENGTH_SHORT).show();
+        button1.setEnabled(false);
+        button2.setEnabled(false);
     }
 
     public void onIncorrectAnswer() {
@@ -176,13 +181,16 @@ public class OrthographyActivity extends Activity {
         final Runnable r1 = new Runnable() {
             @Override
             public void run() {
+                tw1.setTextColor(Color.BLACK);
                 orthographyTest();
             }
         };
         h.postDelayed(r1, 2000);
+        MyViewAnimations.myHangmanShakerAnimation(tw1,10, 10);
         tw1.setText(answer);
         tw1.setTextColor(Color.RED);
-        Toast.makeText(this, "Źle", Toast.LENGTH_SHORT).show();
+        button1.setEnabled(false);
+        button2.setEnabled(false);
     }
     //nie znalazłem żadnej metody string która by zwracała index różnych znaków
     int indexOfWordsDifference(String full_word, String part_word) {

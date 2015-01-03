@@ -157,6 +157,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         tv_hangman = (TextView) findViewById(R.id.hangman_textView);
         tv_hangman.setTextScaleX(3.0f);
 
+        MyViewAnimations.myRotateAnimation(tv_hangman,100);
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-Italic.ttf");
         GradientDrawable gd = new GradientDrawable();
@@ -176,12 +177,21 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
         hangman_image.setImageResource(R.drawable.hangman1);
 
+
         for (int a = 0; a < letters_count; a++) {
             Button b = (Button) findViewById(a);
-            if (!b.getText().toString().toLowerCase().equals(String.valueOf(hangman_word.charAt(randomletterindex))))
+            b.setEnabled(true);
+            if (!b.getText().toString().toLowerCase().equals(String.valueOf(hangman_word.charAt(randomletterindex)))) {
                 b.setVisibility(View.VISIBLE);
-            else
+
+                MyViewAnimations.myRotateAnimation(b, 500);
+            }
+
+            else{
+                MyViewAnimations.myAlphaAnimation(b, 1000);
                 b.setVisibility(View.INVISIBLE);
+            }
+
         }
 
         for (int a = 0; a < hangman_word.length(); a++) {
@@ -205,9 +215,14 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                     hangman_temp += hangman_puzzle.charAt(a);
             }
             hangman_puzzle = hangman_temp;
+
+            MyViewAnimations.myScaleAnimation(tv_hangman,25);
+
             tv_hangman.setText(hangman_puzzle);
+
         } else {
             attempts--;
+            MyViewAnimations.myHangmanShakerAnimation(hangman_image, 10, 5);
             switch (attempts) {
                 case 4:
                     hangman_image.setImageResource(R.drawable.hangman2);
@@ -232,6 +247,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
            onCorrectAnswer();
         }
     }
+
     public void onCorrectAnswer() {
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
@@ -241,7 +257,12 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             }
         };
         h.postDelayed(r1, 2000);
+        for (int a = 0; a < letters_count; a++) {
+            Button b = (Button) findViewById(a);
+            b.setEnabled(false);
+        }
         tv_hangman.setTextColor(Color.GREEN);
+
     }
 
     public void onIncorrectAnswer() {
@@ -255,10 +276,16 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         h.postDelayed(r1, 2000);
         tv_hangman.setText(hangman_word);
         tv_hangman.setTextColor(Color.RED);
+        for (int a = 0; a < letters_count; a++) {
+            Button b = (Button) findViewById(a);
+            b.setEnabled(false);
+        }
+        MyViewAnimations.myScaleAnimation(tv_hangman,2000);
     }
     @Override
     public void onClick(View view) {
         Button b = (Button) view;
+        MyViewAnimations.myScaleAlphaAnimation(view,1000);
         b.setVisibility(View.INVISIBLE);
         hangmanGame(String.valueOf(b.getText()).toLowerCase());
     }

@@ -89,31 +89,33 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         englishWordsTest();
     }
     public void englishWordGame() {
-
         if(random_position_of_correct == user_answer){
             final Handler h = new Handler();
             final Runnable r1 = new Runnable() {
                 @Override
                 public void run() {
                     rl.setBackgroundResource(R.drawable.zeszyt);
+                    MyViewAnimations.myEnglishAnimation(rl,500);
                     englishWordsTest();
                 }
             };
             h.postDelayed(r1,2000);
             rl.setBackgroundResource(R.drawable.zeszyt_yes);
 
-        }else{
+        } else {
             final Handler h = new Handler();
             final Runnable r1 = new Runnable() {
                 @Override
                 public void run() {
                     rl.setBackgroundResource(R.drawable.zeszyt);
+                    MyViewAnimations.myEnglishAnimation(rl,500);
                     englishWordsTest();
                 }
             };
             h.postDelayed(r1,2000);
             rl.setBackgroundResource(R.drawable.zeszyt_no);
         }
+
     }
     public void englishWordsTest() {
         random_value_for_id = (new Random()).nextInt((int) (english_words_count));

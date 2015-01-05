@@ -27,6 +27,57 @@
         android:layout_marginTop="30dp" />
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/legend_tv_tv"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+        <Button
+            android:id="@+id/button_m"
+            style="?android:attr/buttonStyleSmall"
+            android:textSize="10sp"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient"
+            android:text="metale" />
 
+        <Button
+            android:id="@+id/button_n"
+            style="?android:attr/buttonStyleSmall"
+            android:textSize="10sp"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient"
+            android:text="niemetale" />
+
+        <Button
+            android:id="@+id/button_gs"
+            style="?android:attr/buttonStyleSmall"
+            android:textSize="10sp"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient"
+            android:text="gaz szlachetny" />
+
+        <Button
+            android:id="@+id/button_mp"
+            style="?android:attr/buttonStyleSmall"
+            android:textSize="10sp"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient"
+            android:text="metal/półmetal" />
+
+        <Button
+            android:id="@+id/button_np"
+            style="?android:attr/buttonStyleSmall"
+            android:textSize="10sp"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/gradient"
+            android:text="niemetal/półmetal" />
+        </LinearLayout>
 
 </RelativeLayout>

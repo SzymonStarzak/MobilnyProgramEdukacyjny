@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 import java.util.Random;
@@ -82,6 +81,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             } else {
                 button.setVisibility(View.INVISIBLE);
             }
+            colorLegend();
             periodic_tr.addView(button, tr_params);
         }
         periodicTableGame();
@@ -90,15 +90,17 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
     public void periodicTableGame() {
         first_element = elements.get(1);
         element_tv = (TextView) findViewById(R.id.element_tv);
-        randomValueForId = first_element.getId() + new Random().nextInt((int) Element.count(Element.class, null, null)-2);
+        randomValueForId = first_element.getId() + new Random().nextInt((int) Element.count(Element.class, null, null) - 2);
+
+        enableButtons(true);
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-BoldItalic.ttf");
         element_tv.setTypeface(tf);
         element_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
-        if(language.equals("polish")) {
+        if (language.equals("polish")) {
             element_tv.setText(elements.get((int) randomValueForId).name);
-        } else if (language.equals("english")){
+        } else if (language.equals("english")) {
             element_tv.setText(elements.get((int) randomValueForId).english_name);
         }
     }
@@ -119,7 +121,48 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
 
         return 0;
     }
+    public void colorLegend() {
+        Button b;
+        GradientDrawable gd;
 
+        b = (Button) findViewById(R.id.button_m);
+        gd = (GradientDrawable) b.getBackground();
+        gd.setColor(Color.rgb(175, 238, 238));
+        b.setBackground(gd);
+        if (language.equals("english"))
+            b.setText("metal");
+
+        b = (Button) findViewById(R.id.button_n);
+        gd = (GradientDrawable) b.getBackground();
+        gd.setColor(Color.rgb(221, 160, 221));
+        b.setBackground(gd);
+        if (language.equals("english"))
+            b.setText("non metal");
+
+
+        b = (Button) findViewById(R.id.button_gs);
+        gd = (GradientDrawable) b.getBackground();
+        gd.setColor(Color.YELLOW);
+        b.setBackground(gd);
+        if (language.equals("english"))
+            b.setText("gas");
+
+        b = (Button) findViewById(R.id.button_mp);
+        gd = (GradientDrawable) b.getBackground();
+        gd.setColor(Color.rgb(250, 128, 114));
+        b.setBackground(gd);
+        if (language.equals("english"))
+            b.setText("half metal/metal");
+
+        b = (Button) findViewById(R.id.button_np);
+        gd = (GradientDrawable) b.getBackground();
+        gd.setColor(Color.rgb(154, 205, 50));
+        b.setBackground(gd);
+        if (language.equals("english"))
+            b.setText("non/half metal");
+
+
+    }
     public boolean checkGroupAndPerioidForElement(int value) {
         if (value >= 1 && value <= 16 ||
                 value >= 20 && value <= 29 ||
@@ -143,7 +186,6 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
-        Toast.makeText(this, "Dobrze", Toast.LENGTH_SHORT).show();
     }
 
     public void onIncorrectAnswer() {
@@ -157,22 +199,38 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
         h.postDelayed(r1, 2000);
 
         for (int a = 0; a < 10 * 18; a++) {
-            Button b = (Button) findViewById(a*0x64);
-            if( b.getText().toString().equals(elements.get((int) randomValueForId).symbol)){
-                MyViewAnimations.myHangmanShakerAnimation(b,100,5);
+            Button b = (Button) findViewById(a * 0x64);
+            if (b.getText().toString().equals(elements.get((int) randomValueForId).symbol)) {
+                MyViewAnimations.myBlinkAnimation(b, 2000, 5, Color.GREEN, colorElement(findElementOnButton(b)));
                 break;
             }
         }
-        Toast.makeText(this, "Źle", Toast.LENGTH_SHORT).show();
     }
 
+    public Element findElementOnButton(Button b) {
+        for (int a = 0; a < Element.count(Element.class, null, null); a++) {
+            if (b.getText().toString().equals(elements.get(a).symbol)) {
+                return elements.get(a);
+            }
+        }
+        return elements.get(1);
+    }
+
+    public void enableButtons(boolean bool) {
+        for (int a = 0; a < 10 * 18; a++) {
+            Button b = (Button) findViewById(a * 0x64);
+            b.setEnabled(bool);
+        }
+    }
     @Override
     public void onClick(View view) {
         Button b = (Button) view;
-        MyViewAnimations.myRotateAnimation(view,1000);
+        enableButtons(false);
         if (b.getText().equals(elements.get((int) randomValueForId).symbol)) {
             onCorrectAnswer();
+            MyViewAnimations.myBlinkAnimation(b, 2000, 5, Color.GREEN, colorElement(findElementOnButton(b)));
         } else {
+            MyViewAnimations.myWrongAnswerShakerAnimation(view, 35, 20, colorElement(findElementOnButton(b)));
             onIncorrectAnswer();
         }
     }

@@ -242,7 +242,12 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
-        MyViewAnimations.myWrongAnswerShakerAnimation(expression_ll, 25, 10);
+        MyViewAnimations.myWrongAnswerShakerAnimation(expression_ll, 25, 10,Color.parseColor("#EBFCCE"));
+        operator1_tv.setText(getSymbolicOperator(operator1));
+        operator2_tv.setText(getSymbolicOperator(operator2));
+        MyViewAnimations.myScaleAnimation(operator1_tv,500);
+        MyViewAnimations.myScaleAnimation(operator2_tv,500);
+
         enableButtons(false);
     }
     public void enableButtons(boolean b) {

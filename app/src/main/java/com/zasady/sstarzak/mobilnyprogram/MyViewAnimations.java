@@ -2,6 +2,7 @@ package com.zasady.sstarzak.mobilnyprogram;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -26,6 +27,38 @@ public class MyViewAnimations {
         AlphaAnimation al = new AlphaAnimation(1, 0);
         al.setDuration(time);
         view.startAnimation(al);
+    }
+
+    public static void myBlinkAnimation(final View view, final long time, final int repeat, final int blink_color, final int color) {
+
+        final GradientDrawable gd;
+        if(view.getBackground() != null)
+           gd = (GradientDrawable) view.getBackground();
+        else
+          gd = new GradientDrawable();
+
+
+        CountDownTimer cdt = new CountDownTimer(time, time / repeat) {
+            int c = 0;
+
+            @Override
+            public void onTick(long l) {
+                if (c++ % 2 == 0) {
+                    gd.setColor(blink_color);
+                    view.setBackground(gd);
+                } else {
+                    gd.setColor(color);
+                    view.setBackground(gd);
+                }
+
+            }
+
+            @Override
+            public void onFinish() {
+                gd.setColor(color);
+                view.setBackground(gd);
+            }
+        }.start();
     }
 
     public static void myScaleAlphaAnimation(View view, long time) {
@@ -79,7 +112,8 @@ public class MyViewAnimations {
         });
 
     }
-    public static void myJumpingAnimation(final View view, final long time, final long height ) {
+
+    public static void myJumpingAnimation(final View view, final long time, final long height) {
         TranslateAnimation tr = new TranslateAnimation(0, 0, 0, -height);
         tr.setDuration(time / 2);
         view.startAnimation(tr);
@@ -103,6 +137,7 @@ public class MyViewAnimations {
             }
         });
     }
+
     public static void myEnglishAnimation(final View view, final long time) {
         TranslateAnimation tr = new TranslateAnimation(0, -view.getWidth(), 0, 0);
         tr.setDuration(time / 2);
@@ -127,11 +162,9 @@ public class MyViewAnimations {
             }
         });
     }
-    public static void myWrongAnswerShakerAnimation(final View view, long time, int repeat) {
-        final GradientDrawable gd = (GradientDrawable) view.getBackground();
 
-        gd.setColor(Color.RED);
-        view.setBackground(gd);
+    public static void myWrongAnswerShakerAnimation(final View view, long time, int repeat, final int color) {
+        final GradientDrawable gd = (GradientDrawable) view.getBackground();
 
         TranslateAnimation tr = new TranslateAnimation(-5, 5, -5, 5);
         tr.setDuration(time);
@@ -139,12 +172,13 @@ public class MyViewAnimations {
         tr.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                gd.setColor(Color.RED);
+                view.setBackground(gd);
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                gd.setColor(Color.parseColor("#EBFCCE"));
+                gd.setColor(color);
                 view.setBackground(gd);
             }
 
@@ -155,6 +189,7 @@ public class MyViewAnimations {
         });
         view.startAnimation(tr);
     }
+
     public static void myHangmanShakerAnimation(View view, long time, int repeat) {
 
         TranslateAnimation tr = new TranslateAnimation(-5, 5, -5, 5);

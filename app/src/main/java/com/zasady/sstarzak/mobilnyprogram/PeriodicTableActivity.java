@@ -68,6 +68,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             gd.setStroke(1, 0xFF000000);
 
             Button button = new Button(this);
+            button.setId(a * 0x64);
             button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 6.5f);
             Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-Bold.ttf");
             button.setTypeface(tf);
@@ -154,12 +155,21 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
+
+        for (int a = 0; a < 10 * 18; a++) {
+            Button b = (Button) findViewById(a*0x64);
+            if( b.getText().toString().equals(elements.get((int) randomValueForId).symbol)){
+                MyViewAnimations.myHangmanShakerAnimation(b,100,5);
+                break;
+            }
+        }
         Toast.makeText(this, "Źle", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View view) {
         Button b = (Button) view;
+        MyViewAnimations.myRotateAnimation(view,1000);
         if (b.getText().equals(elements.get((int) randomValueForId).symbol)) {
             onCorrectAnswer();
         } else {

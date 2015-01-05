@@ -1,136 +1,164 @@
-<TableLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:stretchColumns="*">
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="@drawable/math">
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="T"
             android:id="@+id/countdown_tv"
-            android:layout_column="4"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_column="4" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:typeface="serif"
+            android:text="TT"
+            android:gravity="center"
+            android:paddingTop="25dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="N"
+            android:background="@drawable/timer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/gradient"
+        android:id="@+id/expression_ll">
+
+        <TextView
             android:id="@+id/number1_tv"
-            android:layout_column="0" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="\?"
+            android:text="NNN"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:id="@+id/operator1_tv"
-            android:layout_column="2" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="N"
+            android:text=" \? "
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:id="@+id/number2_tv"
-            android:layout_column="3" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="\?"
+            android:text="NN"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:id="@+id/operator2_tv"
-            android:layout_column="4" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="N"
+            android:text=" \? "
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:id="@+id/number3_tv"
-            android:layout_column="5" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="40sp"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="="
+            android:text="NN"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:id="@+id/equals_tv"
-            android:layout_column="6" />
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:text=" = "
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="N"
             android:id="@+id/correct_number_tv"
-            android:layout_column="7" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <Space
-            android:layout_width="20px"
-            android:layout_height="150dp"
-            android:layout_column="4" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
-            android:text="+"
+            android:text="NNNNN"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_weight="0.5">
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_weight="0.3">
+
+        <Button
             android:id="@+id/button_plus"
-            android:layout_column="2" />
-        <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
+
+            android:textColor="#9E0505"
+            android:textSize="45sp"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/gradient"
+            android:text="+" />
+
+        <Button
             android:id="@+id/button_minus"
-            android:layout_column="3" />
-        <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*"
+
+            android:textColor="#9E0505"
+            android:textSize="45sp"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/gradient"
+            android:text="-" />
+
+        <Button
             android:id="@+id/button_times"
-            android:layout_column="4" />
-        <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="/"
+
+            android:textColor="#9E0505"
+            android:textSize="45sp"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/gradient"
+            android:text="*" />
+
+        <Button
             android:id="@+id/button_div"
-            android:layout_column="5" />
-        <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
+
+            android:textColor="#9E0505"
+            android:textSize="45sp"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/gradient"
+            android:text="/" />
+
+        <Button
             android:id="@+id/button_mod"
-            android:layout_column="6" />
-    </TableRow>
+            style="?android:attr/buttonStyleSmall"
+
+            android:textColor="#9E0505"
+            android:textSize="45sp"
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/gradient"
+            android:text="%" />
+    </LinearLayout>
 
 
-
-</TableLayout>
+</LinearLayout>

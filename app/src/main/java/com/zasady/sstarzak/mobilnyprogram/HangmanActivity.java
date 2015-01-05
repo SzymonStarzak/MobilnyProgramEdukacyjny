@@ -76,8 +76,8 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         rl = (RelativeLayout) findViewById(R.id.rl_hangman);
 
         hangman_image = (ImageView) findViewById(R.id.hangman_imageView);
-        hangman_image.setScaleX(2.0f);
-        hangman_image.setScaleY(1.5f);
+        hangman_image.setScaleX(1.6f);
+        hangman_image.setScaleY(1.4f);
 
         intent_language = getIntent();
         selected_language = intent_language.getStringExtra("language");

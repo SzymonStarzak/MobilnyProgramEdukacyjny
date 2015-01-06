@@ -21,26 +21,25 @@
         <item>Wisielec z Angli</item>
         <item>Nauka angielskiego</item>
     </string-array>
-
     <string-array name="descs_language">
         <item> Nauka ortografii dla wzrokowców</item>
         <item> Nauka angielskich słow poprzez gre wisielec</item>
         <item> Nauka angielskich słow poprzez gre wisielec</item>
         <item> Nauka angielskich słow z przykładami użycia w zdaniach</item>
     </string-array>
-
     <string-array name="titles_science">
         <item>Szybkie operacje</item>
         <item>Tablica Mendelejewa</item>
         <item>Tablica Mendelejewa ENG</item>
         <item>Systemy liczbowe</item>
     </string-array>
-
     <string-array name="descs_science">
         <item> Wstaw znak +,-,*,/,% aby spełnione było równanie</item>
         <item> Odnajdź położenie pierwiastka chemicznego na tablicy Mendelejewa, wersja polska</item>
         <item> Odnajdź położenie pierwiastka chemicznego na tablicy Mendelejewa, wersja angielska</item>
         <item> Znajdź identyczne liczby przedstawione w różnych systemach liczbowych</item>
     </string-array>
+
+    <string name="title_activity_stats">StatsActivity</string>
 
 </resources>

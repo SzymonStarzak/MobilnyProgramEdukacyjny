@@ -48,10 +48,16 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
     private String[] corrects;
 
+    private int wins;
+
+    private int losts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeral_system);
+
+        wins = losts = 0;
 
         cdt_time = 15000;
         min_random_value = 2;
@@ -163,6 +169,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         };
         h.postDelayed(r1, 2000);
         MyViewAnimations.myBlinkAnimation(numeral_ll, 1000, 5, Color.parseColor("#AAA9EEAE"), Color.parseColor("#BBFBF0CE"));
+        wins++;
     }
 
     public void onIncorrectAnswer() {
@@ -180,7 +187,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         for (int a = 0; a < 3; a++) {
             MyViewAnimations.myScaleAlphaAnimation(findViewById(id_for_correct[a]), 3000);
         }
-
+        losts++;
     }
 
     public Integer[] generateInncorrectNumbers(int correct) {
@@ -218,6 +225,9 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
     protected void onStop() {
         super.onStop();
         cdt.cancel();
+        Stats s = Stats.find(Stats.class,"name = ?", "SystemyLiczowe").get(0);
+        s.addNewStats(wins,losts);
+        s.save();
     }
 
     @Override

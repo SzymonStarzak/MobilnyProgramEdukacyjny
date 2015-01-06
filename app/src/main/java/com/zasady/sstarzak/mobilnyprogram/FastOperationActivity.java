@@ -77,17 +77,27 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
 
     private  String sOperator2;
 
+    private int wins;
+
+    private int losts;
+
     @Override
     protected void onStop() {
         super.onStop();
         cdt.cancel();
         cdt2.cancel();
+
+        Stats s = Stats.find(Stats.class,"name = ?", "SzybkieOperacje").get(0);
+        s.addNewStats(wins,losts);
+        s.save();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fast_operation);
+
+        wins = losts = 0;
 
         expression_ll = (LinearLayout) findViewById(R.id.expression_ll);
 
@@ -223,6 +233,7 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
 
         MyViewAnimations.myBlinkAnimation(expression_ll,1000,5,Color.parseColor("#AAA9EEAE"),Color.parseColor("#BBFBF0CE"));
         enableButtons(false);
+        wins++;
     }
 
     public void onIncorrectAnswer() {
@@ -245,6 +256,7 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
         MyViewAnimations.myScaleAlphaAnimation(operator2_tv,2000);
 
         enableButtons(false);
+        losts++;
     }
     public void enableButtons(boolean b) {
         button_plus.setEnabled(b);

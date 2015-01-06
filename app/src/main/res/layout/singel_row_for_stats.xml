@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.04">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/app_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/wins_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textColor="#00FF00"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_below="@+id/app_name_tv"
+            android:layout_toRightOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/losts_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textColor="#FF0000"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_below="@+id/wins_tv"
+            android:layout_toRightOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/procentage_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:layout_toEndOf="@+id/losts_tv"
+            android:layout_below="@+id/losts_tv"
+            android:layout_alignLeft="@+id/losts_tv"
+            android:layout_alignStart="@+id/losts_tv" />
+
+    </RelativeLayout>
+
+</LinearLayout>

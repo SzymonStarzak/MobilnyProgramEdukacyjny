@@ -36,10 +36,29 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
 
     String language;
 
+    private int wins;
+
+    private int losts;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Stats s;
+        if (language.equals("polish")) {
+            s = Stats.find(Stats.class, "name = ?", "TablicaMendelejewa").get(0);
+        } else {
+            s = Stats.find(Stats.class, "name = ?", "TablicaMendelejewaENG").get(0);
+        }
+        s.addNewStats(wins, losts);
+        s.save();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_periodic_table);
+
+        wins = losts = 0;
 
         language = getIntent().getStringExtra("language");
 
@@ -121,6 +140,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
 
         return 0;
     }
+
     public void colorLegend() {
         Button b;
         GradientDrawable gd;
@@ -162,6 +182,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             b.setText("non/half metal");
 
     }
+
     public boolean checkGroupAndPerioidForElement(int value) {
         if (value >= 1 && value <= 16 ||
                 value >= 20 && value <= 29 ||
@@ -185,6 +206,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
+        wins++;
     }
 
     public void onIncorrectAnswer() {
@@ -204,6 +226,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
                 break;
             }
         }
+        losts++;
     }
 
     public Element findElementOnButton(Button b) {
@@ -221,6 +244,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             b.setEnabled(bool);
         }
     }
+
     @Override
     public void onClick(View view) {
         Button b = (Button) view;
@@ -229,7 +253,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             onCorrectAnswer();
             MyViewAnimations.myBlinkAnimation(b, 2000, 5, Color.GREEN, colorElement(findElementOnButton(b)));
         } else {
-            MyViewAnimations.myWrongAnswerShakerAnimation(view, 25, 15, Color.parseColor("#AAF52C2C"),colorElement(findElementOnButton(b)));
+            MyViewAnimations.myWrongAnswerShakerAnimation(view, 25, 15, Color.parseColor("#AAF52C2C"), colorElement(findElementOnButton(b)));
             onIncorrectAnswer();
         }
     }

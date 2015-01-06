@@ -26,9 +26,11 @@ public class MenuActivity extends Activity {
         context = getApplicationContext();
 
       // context.deleteDatabase(DB_FULL_PATH);
+
         if(!checkDataBase()) {
             context.deleteDatabase(DB_FULL_PATH);
             initOrthographyDb();
+            initStatsDb();
             initHangmanDb();
             initPolishLettersDb();
             initEnglishLettersDb();
@@ -63,15 +65,16 @@ public class MenuActivity extends Activity {
         number.setBackground(gd);
         number.setTypeface(tf);
 
-        Button about = (Button) findViewById(R.id.about_app_button);
-        about.setOnClickListener(new View.OnClickListener() {
+        Button stats = (Button) findViewById(R.id.about_app_button);
+        stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, StatsActivity.class);
+                startActivity(intent);
             }
         });
-        about.setBackground(gd);
-        about.setTypeface(tf);
+        stats.setBackground(gd);
+        stats.setTypeface(tf);
 
         Button finish = (Button) findViewById(R.id.exit_button);
         finish.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +88,17 @@ public class MenuActivity extends Activity {
 
     }
 
+    public void initStatsDb() {
+        Stats.deleteAll(Stats.class);
+        Stats s = new Stats("Ortografia",0,0); s.save();
+        s = new Stats("Wisielec",0,0); s.save();
+        s = new Stats("WisielecENG",0,0); s.save();
+        s = new Stats("Angielski",0,0); s.save();
+        s = new Stats("SzybkieOperacje",0,0); s.save();
+        s = new Stats("TablicaMendelejewa",0,0); s.save();
+        s = new Stats("TablicaMendelejewaENG",0,0); s.save();
+        s = new Stats("SystemyLiczowe",0,0); s.save();
+    }
     public void initEnglishWordsDb() {
         EnglishWords.deleteAll(EnglishWords.class);
 

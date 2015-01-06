@@ -65,11 +65,29 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
 
     private int attempts = 5;
 
+    private int wins;
+
+    private int losts;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Stats s;
+        if (selected_language.equals("polish")) {
+            s = Stats.find(Stats.class,"name = ?", "Wisielec").get(0);
+        } else {
+            s = Stats.find(Stats.class,"name = ?", "WisielecENG").get(0);
+        }
+        s.addNewStats(wins,losts);
+        s.save();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
+
+        wins = losts = 0;
 
         context = getApplicationContext();
 
@@ -262,7 +280,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             b.setEnabled(false);
         }
         tv_hangman.setTextColor(Color.GREEN);
-
+        wins++;
     }
 
     public void onIncorrectAnswer() {
@@ -281,6 +299,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
             b.setEnabled(false);
         }
         MyViewAnimations.myScaleAnimation(tv_hangman,2000);
+        losts++;
     }
     @Override
     public void onClick(View view) {

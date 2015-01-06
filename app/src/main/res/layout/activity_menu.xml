@@ -42,7 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="O aplikacji"
+        android:text="Statystyki"
         android:id="@+id/about_app_button"
         android:layout_below="@+id/space2"
         android:layout_toRightOf="@+id/space2"

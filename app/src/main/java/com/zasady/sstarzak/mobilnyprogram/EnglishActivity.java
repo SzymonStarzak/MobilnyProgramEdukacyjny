@@ -48,12 +48,26 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
 
     private RelativeLayout rl;
 
+    private int wins;
+
+    private int losts;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Stats s = Stats.find(Stats.class,"name = ?", "Angielski").get(0);
+        s.addNewStats(wins,losts);
+        s.save();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_english);
 
         rl = (RelativeLayout) findViewById(R.id.english_relative_layout);
+
+        wins = losts = 0;
 
         ew = EnglishWords.listAll(EnglishWords.class);
         english_words_count = EnglishWords.count(EnglishWords.class, null, null);
@@ -101,6 +115,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
             };
             h.postDelayed(r1,2000);
             rl.setBackgroundResource(R.drawable.zeszyt_yes);
+            wins++;
 
         } else {
             final Handler h = new Handler();
@@ -114,6 +129,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
             };
             h.postDelayed(r1,2000);
             rl.setBackgroundResource(R.drawable.zeszyt_no);
+            losts++;
         }
 
     }

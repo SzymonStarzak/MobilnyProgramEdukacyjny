@@ -25,6 +25,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
+      // context.deleteDatabase(DB_FULL_PATH);
         if(!checkDataBase()) {
             context.deleteDatabase(DB_FULL_PATH);
             initOrthographyDb();
@@ -93,6 +94,11 @@ public class MenuActivity extends Activity {
                 "And then they'd tow the sharks back to Purteen Harbor, boil them up, use the oil."); ew1.save();
         ew1 = new EnglishWords("towel","ręcznik","serweta","zasłona","wieża",
                 "So we see Pranav here going into the supermarket and he's shopping for some paper towels."); ew1.save();
+        ew1 = new EnglishWords("arm","ramię","głowa","armia","nos",
+                "And from the wicked their light is withholden, And the high arm is broken."); ew1.save();
+        ew1 = new EnglishWords("bath","kąpiel","bat","umywalka","skrobanie",
+                "They tell us to have a bath."); ew1.save();
+
 
     }
     public void initOrthographyDb() {
@@ -167,21 +173,71 @@ public class MenuActivity extends Activity {
 
         HangmanCategory c1 = new HangmanCategory("Zwierzęta", "Animals"); c1.save();
         HangmanCategory c2 = new HangmanCategory("Owoce","Fruits"); c2.save();
+        HangmanCategory c3 = new HangmanCategory("Części ciała","Body parts"); c3.save();
+        HangmanCategory c4 = new HangmanCategory("Planety","Planets"); c4.save();
 
         //Animals PL
         HangmanWords gw1 = new HangmanWords("pies",c1); gw1.save();
         gw1 = new HangmanWords("koń",c1); gw1.save();
+        gw1 = new HangmanWords("krowa",c1); gw1.save();
+        gw1 = new HangmanWords("owca",c1); gw1.save();
+        gw1 = new HangmanWords("wilk",c1); gw1.save();
+        gw1 = new HangmanWords("krokodyl",c1); gw1.save();
 
         //Animials ENG
         HangmanWordsEng hwe1 = new HangmanWordsEng("dog",c1); hwe1.save();
         hwe1 = new HangmanWordsEng("horse",c1); hwe1.save();
+        hwe1 = new HangmanWordsEng("cow",c1); hwe1.save();
+        hwe1 = new HangmanWordsEng("pig",c1); hwe1.save();
+        hwe1 = new HangmanWordsEng("wolf",c1); hwe1.save();
+        hwe1 = new HangmanWordsEng("tiger",c1); hwe1.save();
 
         //Fruits PL
         gw1 = new HangmanWords("banan",c2); gw1.save();
         gw1 = new HangmanWords("jagoda",c2); gw1.save();
+        gw1 = new HangmanWords("gruszka",c2); gw1.save();
+        gw1 = new HangmanWords("czereśnia",c2); gw1.save();
+        gw1 = new HangmanWords("arbuz",c2); gw1.save();
 
         //Fruits ENG
         hwe1 = new HangmanWordsEng("apple",c2); hwe1.save();
+        hwe1 = new HangmanWordsEng("orange",c2); hwe1.save();
+        hwe1 = new HangmanWordsEng("watermelon",c2); hwe1.save();
+        hwe1 = new HangmanWordsEng("pineapple",c2); hwe1.save();
+        hwe1 = new HangmanWordsEng("grapes",c2); hwe1.save();
+
+        //Body parts PL
+        HangmanWords bp1 = new HangmanWords("ręka",c3); bp1.save();
+        bp1 = new HangmanWords("ucho",c3); bp1.save();
+        bp1 = new HangmanWords("noga",c3); bp1.save();
+        bp1 = new HangmanWords("nos",c3); bp1.save();
+        bp1 = new HangmanWords("czoło",c3); bp1.save();
+
+        //Body parts PL
+        HangmanWordsEng bpe1 = new HangmanWordsEng("arm",c3); bpe1.save();
+        bpe1 = new HangmanWordsEng("finger",c3); bpe1.save();
+        bpe1 = new HangmanWordsEng("head",c3); bpe1.save();
+        bpe1 = new HangmanWordsEng("ear",c3); bpe1.save();
+        bpe1 = new HangmanWordsEng("knee",c3); bpe1.save();
+
+        //Planets PL
+        HangmanWords planets = new HangmanWords("merkury",c4); planets.save();
+        planets = new HangmanWords("wenus",c4); planets.save();
+        planets = new HangmanWords("ziemia",c4); planets.save();
+        planets = new HangmanWords("mars",c4); planets.save();
+        planets = new HangmanWords("jowisz",c4); planets.save();
+        planets = new HangmanWords("saturn",c4); planets.save();
+        planets = new HangmanWords("uran",c4); planets.save();
+        planets = new HangmanWords("neptun",c4); planets.save();
+
+        HangmanWordsEng planetse = new HangmanWordsEng("mercury",c4); planetse.save();
+        planetse = new HangmanWordsEng("venus",c4); planetse.save();
+        planetse = new HangmanWordsEng("earth",c4); planetse.save();
+        planetse = new HangmanWordsEng("mars",c4); planetse.save();
+        planetse = new HangmanWordsEng("jupiter",c4); planetse.save();
+        planetse = new HangmanWordsEng("saturn",c4); planetse.save();
+        planetse = new HangmanWordsEng("uranus",c4); planetse.save();
+        planetse = new HangmanWordsEng("neptune",c4); planetse.save();
 
     }
     public void initPolishLettersDb() {

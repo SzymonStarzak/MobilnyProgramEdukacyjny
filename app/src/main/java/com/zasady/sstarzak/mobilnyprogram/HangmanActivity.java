@@ -287,6 +287,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
         Button b = (Button) view;
         MyViewAnimations.myScaleAlphaAnimation(view,1000);
         b.setVisibility(View.INVISIBLE);
+        b.setEnabled(false);
         hangmanGame(String.valueOf(b.getText()).toLowerCase());
     }
 }

@@ -24,29 +24,29 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
     private LinearLayout numeral_ll;
 
-    private  TextView countdown_tv;
+    private TextView countdown_tv;
 
     private int cdt_time;
 
-    private  int max_random_range;
+    private int max_random_range;
 
-    private   int min_random_value;
+    private int min_random_value;
 
-    private   int[] radioIds;
+    private int[] radioIds;
 
-    private   RadioButton[] radioButtons;
+    private RadioButton[] radioButtons;
 
-    private   Button check_button;
+    private Button check_button;
 
-    private    Integer[] id_for_correct;
+    private Integer[] id_for_correct;
 
-    private    Integer[] id_for_answers;
+    private Integer[] id_for_answers;
 
-    private    Random r;
+    private Random r;
 
-    private   Integer correct;
+    private Integer correct;
 
-    private   String[] corrects;
+    private String[] corrects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         for (int a = 0; a < 9; a++) {
             radioButtons[a] = (RadioButton) findViewById(radioIds[a]);
             radioButtons[a].setTypeface(tf);
-            radioButtons[a].setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
+            radioButtons[a].setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
             radioButtons[a].setOnClickListener(this);
         }
         numeralSystemGame();
@@ -94,7 +94,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
             @Override
             public void onTick(long l) {
                 countdown_tv.setText(String.valueOf(l / 1000));
-                if(l / 1000 <= 5) {
+                if (l / 1000 <= 5) {
                     MyViewAnimations.myTimerShakeAnimation(countdown_tv, 550);
                     countdown_tv.setTextColor(Color.RED);
                 }
@@ -162,7 +162,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
-        MyViewAnimations.myBlinkAnimation(numeral_ll,1000,5,Color.parseColor("#AAA9EEAE"),Color.parseColor("#BBFBF0CE"));
+        MyViewAnimations.myBlinkAnimation(numeral_ll, 1000, 5, Color.parseColor("#AAA9EEAE"), Color.parseColor("#BBFBF0CE"));
     }
 
     public void onIncorrectAnswer() {
@@ -175,10 +175,10 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 3000);
-        MyViewAnimations.myWrongAnswerShakerAnimation(numeral_ll,25,10,Color.parseColor("#AAF52C2C"),Color.parseColor("#BBFBF0CE"));
+        MyViewAnimations.myWrongAnswerShakerAnimation(numeral_ll, 25, 10, Color.parseColor("#AAF52C2C"), Color.parseColor("#BBFBF0CE"));
 
-        for(int a = 0; a < 3; a++){
-            MyViewAnimations.myScaleAlphaAnimation( findViewById(id_for_correct[a]),3000);
+        for (int a = 0; a < 3; a++) {
+            MyViewAnimations.myScaleAlphaAnimation(findViewById(id_for_correct[a]), 3000);
         }
 
     }
@@ -197,12 +197,14 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
         return inc;
     }
+
     public void enableButtons(boolean bool) {
         check_button.setEnabled(bool);
         for (int a = 0; a < 9; a++) {
             radioButtons[a].setEnabled(bool);
         }
     }
+
     public void clearRadioGroups() {
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupDec);
         rg.clearCheck();
@@ -217,6 +219,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         super.onStop();
         cdt.cancel();
     }
+
     @Override
     public void onClick(View view) {
 

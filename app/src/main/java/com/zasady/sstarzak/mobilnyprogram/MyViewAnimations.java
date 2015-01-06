@@ -1,6 +1,5 @@
 package com.zasady.sstarzak.mobilnyprogram;
 
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -83,7 +82,7 @@ public class MyViewAnimations {
     }
 
     public static void myTimerShakeAnimation(View view, long time) {
-        ScaleAnimation sa = new ScaleAnimation(1, 1.4f, 1, 1.4f);
+        ScaleAnimation sa = new ScaleAnimation(1, 1.2f, 1, 1.2f);
         sa.setDuration(time);
         view.startAnimation(sa);
     }
@@ -163,7 +162,7 @@ public class MyViewAnimations {
         });
     }
 
-    public static void myWrongAnswerShakerAnimation(final View view, long time, int repeat, final int color) {
+    public static void myWrongAnswerShakerAnimation(final View view, long time, int repeat, final int blink_color, final int color) {
         final GradientDrawable gd = (GradientDrawable) view.getBackground();
 
         TranslateAnimation tr = new TranslateAnimation(-5, 5, -5, 5);
@@ -172,7 +171,7 @@ public class MyViewAnimations {
         tr.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                gd.setColor(Color.RED);
+                gd.setColor(blink_color);
                 view.setBackground(gd);
             }
 

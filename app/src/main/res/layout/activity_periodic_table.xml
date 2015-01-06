@@ -2,7 +2,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/relative1"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/chemistry">
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -17,14 +18,16 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/element_tv"
+        android:background="@drawable/gradient"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center" />
 
 
     <LinearLayout
@@ -40,7 +43,7 @@
             android:textSize="10sp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient3"
             android:text="metale" />
 
         <Button
@@ -49,7 +52,7 @@
             android:textSize="10sp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient3"
             android:text="niemetale" />
 
         <Button
@@ -58,7 +61,7 @@
             android:textSize="10sp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient3"
             android:text="gaz szlachetny" />
 
         <Button
@@ -67,7 +70,7 @@
             android:textSize="10sp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient3"
             android:text="metal/półmetal" />
 
         <Button
@@ -76,8 +79,9 @@
             android:textSize="10sp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:background="@drawable/gradient"
-            android:text="niemetal/półmetal" />
+            android:background="@drawable/gradient3"
+            android:text="niemetal/półmetal"
+            android:focusable="false" />
         </LinearLayout>
 
 </RelativeLayout>

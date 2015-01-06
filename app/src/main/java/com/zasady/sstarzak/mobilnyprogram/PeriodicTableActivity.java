@@ -96,7 +96,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "DroidSerif-BoldItalic.ttf");
         element_tv.setTypeface(tf);
-        element_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        element_tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
 
         if (language.equals("polish")) {
             element_tv.setText(elements.get((int) randomValueForId).name);
@@ -160,7 +160,6 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
         b.setBackground(gd);
         if (language.equals("english"))
             b.setText("non/half metal");
-
 
     }
     public boolean checkGroupAndPerioidForElement(int value) {
@@ -230,7 +229,7 @@ public class PeriodicTableActivity extends Activity implements View.OnClickListe
             onCorrectAnswer();
             MyViewAnimations.myBlinkAnimation(b, 2000, 5, Color.GREEN, colorElement(findElementOnButton(b)));
         } else {
-            MyViewAnimations.myWrongAnswerShakerAnimation(view, 35, 20, colorElement(findElementOnButton(b)));
+            MyViewAnimations.myWrongAnswerShakerAnimation(view, 25, 15, Color.parseColor("#AAF52C2C"),colorElement(findElementOnButton(b)));
             onIncorrectAnswer();
         }
     }

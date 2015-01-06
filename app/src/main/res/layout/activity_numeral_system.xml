@@ -1,159 +1,175 @@
-<RelativeLayout
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/numbers">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="T"
-        android:id="@+id/countdown_tv"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:weightSum="1"
+        android:layout_weight="1.5"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/countdown_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:typeface="serif"
+            android:text="TT"
+            android:gravity="center"
+            android:paddingTop="25dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/timer"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.02" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Decymalny   "
-        android:id="@+id/textView2"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/countdown_tv"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="31dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Hexadecymalny"
-        android:id="@+id/textView3"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Binarny"
-        android:id="@+id/textView4"
-        android:layout_above="@+id/radioGroupBin"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginLeft="80dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <RadioGroup
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_above="@+id/numeral_check_button"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2"
-        android:id="@+id/radioGroupDec">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dec"
-            android:id="@+id/radiodec1"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dec"
-            android:id="@+id/radiodec2"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dec"
-            android:id="@+id/radiodec3"
-            android:checked="false" />
-    </RadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:text="Sprawdź"
-        android:id="@+id/numeral_check_button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_marginBottom="29dp"
-        android:layout_alignRight="@+id/radioGroupHex"
-        android:layout_alignEnd="@+id/radioGroupHex" />
+        android:gravity="center"
+        android:layout_weight="0.3"
+        android:background="@drawable/gradient2"
+        android:id="@+id/numeral_ll">
 
-    <RadioGroup
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.36"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/radioGroupDec">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Decymalny"
+                android:id="@+id/textView2"
+                android:typeface="monospace" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dec"
+                android:id="@+id/radiodec1"
+                android:checked="false"
+                android:typeface="normal" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dec"
+                android:id="@+id/radiodec2"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dec"
+                android:id="@+id/radiodec3"
+                android:checked="false" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/radioGroupHex">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Hexadecymalny"
+                android:id="@+id/textView3"
+                android:typeface="monospace" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hex"
+                android:id="@+id/radiohex1"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hex"
+                android:id="@+id/radiohex2"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hex"
+                android:id="@+id/radiohex3"
+                android:checked="false" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.7"
+            android:id="@+id/radioGroupBin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Binarny"
+                android:id="@+id/textView4"
+                android:typeface="monospace" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bin"
+                android:id="@+id/radiobin1"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bin"
+                android:id="@+id/radiobin2"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bin"
+                android:id="@+id/radiobin3"
+                android:checked="false" />
+        </RadioGroup>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignTop="@+id/radioGroupDec"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3"
-        android:layout_above="@+id/numeral_check_button"
-        android:id="@+id/radioGroupHex">
-
-        <RadioButton
-            android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.3"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="hex"
-            android:id="@+id/radiohex1"
-            android:checked="false" />
+            android:text="Sprawdź"
+            android:id="@+id/numeral_check_button"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/gradient2"
+            android:gravity="center" />
+        </LinearLayout>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hex"
-            android:id="@+id/radiohex2"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hex"
-            android:id="@+id/radiohex3"
-            android:checked="false" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignTop="@+id/radioGroupHex"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_above="@+id/numeral_check_button"
-        android:id="@+id/radioGroupBin"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4">
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="bin"
-            android:id="@+id/radiobin1"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="bin"
-            android:id="@+id/radiobin2"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="bin"
-            android:id="@+id/radiobin3"
-            android:checked="false" />
-    </RadioGroup>
-</RelativeLayout>
+</LinearLayout>

@@ -216,17 +216,12 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
             @Override
-            public void run() {
-                gd.setColor(Color.parseColor("#EBFCCE"));
-                expression_ll.setBackground(gd);
-                fastOperationGame();
+            public void run() {fastOperationGame();
             }
         };
         h.postDelayed(r1, 2000);
 
-        gd.setColor(Color.GREEN);
-        expression_ll.setBackground(gd);
-
+        MyViewAnimations.myBlinkAnimation(expression_ll,1000,5,Color.parseColor("#AAA9EEAE"),Color.parseColor("#BBFBF0CE"));
         enableButtons(false);
     }
 
@@ -242,11 +237,12 @@ public class FastOperationActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
-        MyViewAnimations.myWrongAnswerShakerAnimation(expression_ll, 25, 10,Color.parseColor("#EBFCCE"));
+        MyViewAnimations.myWrongAnswerShakerAnimation(expression_ll, 25, 10,Color.parseColor("#AAF52C2C"),Color.parseColor("#99EBFCCE"));
         operator1_tv.setText(getSymbolicOperator(operator1));
         operator2_tv.setText(getSymbolicOperator(operator2));
-        MyViewAnimations.myScaleAnimation(operator1_tv,500);
-        MyViewAnimations.myScaleAnimation(operator2_tv,500);
+
+        MyViewAnimations.myScaleAlphaAnimation(operator1_tv,2000);
+        MyViewAnimations.myScaleAlphaAnimation(operator2_tv,2000);
 
         enableButtons(false);
     }

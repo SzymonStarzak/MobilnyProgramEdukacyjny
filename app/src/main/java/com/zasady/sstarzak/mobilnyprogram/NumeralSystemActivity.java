@@ -1,15 +1,18 @@
 package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -17,38 +20,40 @@ import java.util.Random;
 
 public class NumeralSystemActivity extends Activity implements View.OnClickListener {
 
-    CountDownTimer cdt;
+    private CountDownTimer cdt;
 
-    TextView countdown_tv;
+    private LinearLayout numeral_ll;
 
-    int cdt_time;
+    private  TextView countdown_tv;
 
-    int max_random_range;
+    private int cdt_time;
 
-    int min_random_value;
+    private  int max_random_range;
 
-    int[] radioIds;
+    private   int min_random_value;
 
-    RadioButton[] radioButtons;
+    private   int[] radioIds;
 
-    Button check_button;
+    private   RadioButton[] radioButtons;
 
-    Integer[] id_for_correct;
+    private   Button check_button;
 
-    Integer[] id_for_answers;
+    private    Integer[] id_for_correct;
 
-    Random r;
+    private    Integer[] id_for_answers;
 
-    Integer correct;
+    private    Random r;
 
-    String[] corrects;
+    private   Integer correct;
+
+    private   String[] corrects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeral_system);
 
-        cdt_time = 40000;
+        cdt_time = 15000;
         min_random_value = 2;
         max_random_range = 20;
 
@@ -56,6 +61,10 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
         check_button = (Button) findViewById(R.id.numeral_check_button);
         check_button.setOnClickListener(this);
+
+        Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "android_7.ttf");
+
+        numeral_ll = (LinearLayout) findViewById(R.id.numeral_ll);
 
         radioIds = new int[9];
         radioIds[0] = R.id.radiodec1;
@@ -72,16 +81,23 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
         for (int a = 0; a < 9; a++) {
             radioButtons[a] = (RadioButton) findViewById(radioIds[a]);
+            radioButtons[a].setTypeface(tf);
+            radioButtons[a].setTextSize(TypedValue.COMPLEX_UNIT_SP,25);
             radioButtons[a].setOnClickListener(this);
         }
         numeralSystemGame();
     }
 
     public void numeralSystemGame() {
+        enableButtons(true);
         cdt = new CountDownTimer(cdt_time, 100) {
             @Override
             public void onTick(long l) {
                 countdown_tv.setText(String.valueOf(l / 1000));
+                if(l / 1000 <= 5) {
+                    MyViewAnimations.myTimerShakeAnimation(countdown_tv, 550);
+                    countdown_tv.setTextColor(Color.RED);
+                }
             }
 
             @Override
@@ -92,6 +108,8 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         }.start();
 
         clearRadioGroups();
+
+        countdown_tv.setTextColor(Color.BLACK);
 
         id_for_answers = new Integer[3];
 
@@ -126,6 +144,7 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
     }
 
     public void numeralSystemTest() {
+        enableButtons(false);
         if (Arrays.equals(id_for_answers, id_for_correct)) {
             onCorrectAnswer();
         } else {
@@ -134,7 +153,6 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
     }
 
     public void onCorrectAnswer() {
-        Toast.makeText(this, "Dobrze", Toast.LENGTH_SHORT).show();
         cdt.cancel();
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
@@ -144,10 +162,10 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
             }
         };
         h.postDelayed(r1, 2000);
+        MyViewAnimations.myBlinkAnimation(numeral_ll,1000,5,Color.parseColor("#AAA9EEAE"),Color.parseColor("#BBFBF0CE"));
     }
 
     public void onIncorrectAnswer() {
-        Toast.makeText(this, "Źle", Toast.LENGTH_SHORT).show();
         cdt.cancel();
         final Handler h = new Handler();
         final Runnable r1 = new Runnable() {
@@ -156,14 +174,19 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
                 numeralSystemGame();
             }
         };
-        h.postDelayed(r1, 2000);
+        h.postDelayed(r1, 3000);
+        MyViewAnimations.myWrongAnswerShakerAnimation(numeral_ll,25,10,Color.parseColor("#AAF52C2C"),Color.parseColor("#BBFBF0CE"));
+
+        for(int a = 0; a < 3; a++){
+            MyViewAnimations.myScaleAlphaAnimation( findViewById(id_for_correct[a]),3000);
+        }
+
     }
 
     public Integer[] generateInncorrectNumbers(int correct) {
         Integer[] inc = new Integer[9];
         int index = 0;
         int random;
-
         do {
             do {
                 random = new Random().nextInt(max_random_range) + min_random_value;
@@ -174,7 +197,12 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
 
         return inc;
     }
-
+    public void enableButtons(boolean bool) {
+        check_button.setEnabled(bool);
+        for (int a = 0; a < 9; a++) {
+            radioButtons[a].setEnabled(bool);
+        }
+    }
     public void clearRadioGroups() {
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupDec);
         rg.clearCheck();
@@ -189,7 +217,6 @@ public class NumeralSystemActivity extends Activity implements View.OnClickListe
         super.onStop();
         cdt.cancel();
     }
-
     @Override
     public void onClick(View view) {
 

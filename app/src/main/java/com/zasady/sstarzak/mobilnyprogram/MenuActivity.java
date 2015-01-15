@@ -25,7 +25,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-      // context.deleteDatabase(DB_FULL_PATH);
+       //context.deleteDatabase(DB_FULL_PATH);
 
         if(!checkDataBase()) {
             context.deleteDatabase(DB_FULL_PATH);
@@ -112,6 +112,8 @@ public class MenuActivity extends Activity {
                 "And from the wicked their light is withholden, And the high arm is broken."); ew1.save();
         ew1 = new EnglishWords("bath","kąpiel","bat","umywalka","skrobanie",
                 "They tell us to have a bath."); ew1.save();
+        ew1 = new EnglishWords("nightingale","słowik","nietoperz","sowa","wrona",
+                "Those who live near nightingale nests know all too well that the males often sing all night."); ew1.save();
 
 
     }

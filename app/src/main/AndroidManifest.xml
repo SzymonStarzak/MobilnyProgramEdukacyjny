@@ -40,30 +40,30 @@
         <activity
             android:name=".OrthographyActivity"
             android:label="@string/title_activity_orthography"
-            android:screenOrientation="locked"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name=".HangmanActivity"
             android:label="@string/title_activity_hangman"
-            android:screenOrientation="locked"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name=".EnglishActivity"
             android:label="@string/title_activity_english"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name=".NumberActivity"
             android:label="@string/title_activity_number"
-            android:screenOrientation="locked"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name=".FastOperationActivity"
             android:label="@string/title_activity_fast_operation"
-            android:screenOrientation="locked"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
@@ -80,6 +80,7 @@
         </activity>
         <activity
             android:name=".StatsActivity"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:label="@string/title_activity_stats" >
         </activity>

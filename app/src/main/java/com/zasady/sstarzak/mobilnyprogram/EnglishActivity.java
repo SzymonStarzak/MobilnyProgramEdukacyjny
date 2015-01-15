@@ -48,6 +48,8 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
 
     private RelativeLayout rl;
 
+    private Button b1;
+
     private int wins;
 
     private int losts;
@@ -86,7 +88,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         gd.setCornerRadius(50);
         gd.setStroke(10, Color.LTGRAY);
 
-        Button b1 = (Button) findViewById(R.id.english_words_check_button);
+        b1 = (Button) findViewById(R.id.english_words_check_button);
         b1.setBackground(gd);
 
         b1.setOnClickListener(this);
@@ -103,6 +105,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         englishWordsTest();
     }
     public void englishWordGame() {
+        enableBotons(false);
         if(random_position_of_correct == user_answer){
             final Handler h = new Handler();
             final Runnable r1 = new Runnable() {
@@ -133,6 +136,9 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         }
 
     }
+    public void enableBotons( boolean e) {
+        b1.setEnabled(e);
+    }
     public void englishWordsTest() {
         random_value_for_id = (new Random()).nextInt((int) (english_words_count));
         english_word = EnglishWords.findById(EnglishWords.class, english_first_word.getId() + random_value_for_id);
@@ -141,7 +147,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
 
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupEng);
         rg.clearCheck();
-
+        enableBotons(true);
         switch (random_position_of_correct) {
             case 0: rb1.setText(english_word.correct);
                     rb2.setText(english_word.fake1);

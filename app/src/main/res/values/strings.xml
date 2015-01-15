@@ -16,14 +16,14 @@
     <string name="title_activity_numeral_system">NumeralSystemActivity</string>
 
     <string-array name="titles_language">
-        <item>Ortografia nie tylko dla najlepszych</item>
+        <item>Ortografia dla najlepszych</item>
         <item>Wisielec z Polski</item>
-        <item>Wisielec z Angli</item>
+        <item>Wisielec z Anglii</item>
         <item>Nauka angielskiego</item>
     </string-array>
     <string-array name="descs_language">
-        <item> Nauka ortografii dla wzrokowców</item>
-        <item> Nauka angielskich słow poprzez gre wisielec</item>
+        <item> Nauka ortografii, rzadko występujących słów</item>
+        <item> Nauka polskich słow poprzez gre wisielec</item>
         <item> Nauka angielskich słow poprzez gre wisielec</item>
         <item> Nauka angielskich słow z przykładami użycia w zdaniach</item>
     </string-array>
@@ -34,7 +34,7 @@
         <item>Systemy liczbowe</item>
     </string-array>
     <string-array name="descs_science">
-        <item> Wstaw znak +,-,*,/,% aby spełnione było równanie</item>
+        <item> Wstaw operator: +,-,*,/ lub % aby spełnione było równanie</item>
         <item> Odnajdź położenie pierwiastka chemicznego na tablicy Mendelejewa, wersja polska</item>
         <item> Odnajdź położenie pierwiastka chemicznego na tablicy Mendelejewa, wersja angielska</item>
         <item> Znajdź identyczne liczby przedstawione w różnych systemach liczbowych</item>

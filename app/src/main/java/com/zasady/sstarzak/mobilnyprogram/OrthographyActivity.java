@@ -85,8 +85,8 @@ public class OrthographyActivity extends Activity {
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(100);
         gd.setStroke(10, Color.LTGRAY);
+        gd.setColor(Color.WHITE);
         gd.setSize(p.x / 4, p.x / 4);
-
 
         Typeface tf = Typeface.createFromAsset(this.getResources().getAssets(), "PTF76F.ttf");
         button1.setTypeface(tf);

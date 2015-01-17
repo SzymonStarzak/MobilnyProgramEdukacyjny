@@ -42,6 +42,7 @@ public class MenuActivity extends Activity {
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(25);
         gd.setStroke(3, Color.RED);
+        gd.setColor(Color.WHITE);
 
         Button language = (Button) findViewById(R.id.language_button);
         language.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +52,7 @@ public class MenuActivity extends Activity {
                 startActivity(intent);
             }
         });
-        language.setBackground(gd);  //API 17 !
+        language.setBackground(gd);
         language.setTypeface(tf);
 
         Button number = (Button) findViewById(R.id.number_button);

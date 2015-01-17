@@ -87,6 +87,7 @@ public class EnglishActivity extends Activity implements View.OnClickListener {
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(50);
         gd.setStroke(10, Color.LTGRAY);
+        gd.setColor(Color.WHITE);
 
         b1 = (Button) findViewById(R.id.english_words_check_button);
         b1.setBackground(gd);

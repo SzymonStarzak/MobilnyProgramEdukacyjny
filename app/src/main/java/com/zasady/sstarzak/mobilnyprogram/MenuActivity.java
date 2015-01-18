@@ -25,7 +25,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
         context = getApplicationContext();
 
-       //context.deleteDatabase(DB_FULL_PATH);
+     //  context.deleteDatabase(DB_FULL_PATH);
 
         if(!checkDataBase()) {
             context.deleteDatabase(DB_FULL_PATH);

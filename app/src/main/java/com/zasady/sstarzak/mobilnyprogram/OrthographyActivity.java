@@ -131,7 +131,6 @@ public class OrthographyActivity extends Activity {
         filteredwordscount = (long) filteredwords.size();
         orthographyWord = filteredwords.get((new Random()).nextInt((int) filteredwordscount));
 
-
         final int diff = indexOfWordsDifference(orthographyWord.full_word, orthographyWord.part_word);
 
         String puzzle_word = orthographyWord.part_word.substring(0, diff) + "..." + orthographyWord.part_word.substring(diff);

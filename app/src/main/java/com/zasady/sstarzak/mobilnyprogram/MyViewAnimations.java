@@ -96,7 +96,6 @@ public class MyViewAnimations {
             public void onAnimationStart(Animation animation) {
 
             }
-
             @Override
             public void onAnimationEnd(Animation animation) {
                 ScaleAnimation sa = new ScaleAnimation(1, 1, 0.01f, 1);
@@ -109,7 +108,6 @@ public class MyViewAnimations {
 
             }
         });
-
     }
 
     public static void myJumpingAnimation(final View view, final long time, final long height) {

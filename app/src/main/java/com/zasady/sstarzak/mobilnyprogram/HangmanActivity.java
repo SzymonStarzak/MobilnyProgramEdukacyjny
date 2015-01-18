@@ -209,9 +209,7 @@ public class HangmanActivity extends Activity implements View.OnClickListener {
                 MyViewAnimations.myAlphaAnimation(b, 1000);
                 b.setVisibility(View.INVISIBLE);
             }
-
         }
-
         for (int a = 0; a < hangman_word.length(); a++) {
             if (hangman_word.charAt(a) != hangman_word.charAt(randomletterindex))
                 hangman_puzzle += "-";

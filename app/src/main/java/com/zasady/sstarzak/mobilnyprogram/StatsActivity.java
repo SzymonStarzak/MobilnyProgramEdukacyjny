@@ -2,13 +2,11 @@ package com.zasady.sstarzak.mobilnyprogram;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StatsActivity extends Activity implements AdapterView.OnItemClickListener  {
+public class StatsActivity extends Activity  {
 
     ListView list;
 
@@ -29,12 +27,6 @@ public class StatsActivity extends Activity implements AdapterView.OnItemClickLi
 
         list = (ListView) findViewById(R.id.listView_stats);
         list.setAdapter(new MyAdapterForStats(this));
-        list.setOnItemClickListener(this);
-
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
 }

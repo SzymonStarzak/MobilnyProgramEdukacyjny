@@ -53,8 +53,7 @@
             android:id="@+id/procentage_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:layout_toEndOf="@+id/losts_tv"
+            android:text="Small Text"
             android:layout_below="@+id/losts_tv"
             android:layout_alignLeft="@+id/losts_tv"
             android:layout_alignStart="@+id/losts_tv" />

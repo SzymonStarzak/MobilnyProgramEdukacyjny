@@ -115,7 +115,20 @@ public class MenuActivity extends Activity {
                 "They tell us to have a bath."); ew1.save();
         ew1 = new EnglishWords("nightingale","słowik","nietoperz","sowa","wrona",
                 "Those who live near nightingale nests know all too well that the males often sing all night."); ew1.save();
-
+        ew1 = new EnglishWords("rope","sznur","patyk","struna","pasek",
+                "And the first mate takes a rope and ties Odysseus to the mast in a nice knot."); ew1.save();
+        ew1 = new EnglishWords("engine","silnik","opona","szyba","kierownica",
+                "We invented something called an ion drive, which is a very, very, very low-thrust engine."); ew1.save();
+        ew1 = new EnglishWords("mountain","góra","krater","wzniesienie","dolina",
+                "It was on my fourth trip to Everest that a comet passed over the mountain."); ew1.save();
+        ew1 = new EnglishWords("suspect","podejrzany","niewinny","świadek","sędzia",
+                "If you are a suspect in a criminal case, well it's pretty obvious, your phone will be tapped."); ew1.save();
+        ew1 = new EnglishWords("jaw","szczęka","pazury","ogon","słoik",
+                "And so we're just eating, and her jaw just drops, and she goes, Mom!"); ew1.save();
+        ew1 = new EnglishWords("edge","krawędź","bok","przekątna","kąt",
+                "But you can see the edge of the Sun, and the universe gets that way, and you can see that."); ew1.save();
+        ew1 = new EnglishWords("to rend","rozerwać","scalić","kroić","ciąć",
+                "And the veil of the temple was rent in two from the top to the bottom."); ew1.save();
 
     }
     public void initOrthographyDb() {
